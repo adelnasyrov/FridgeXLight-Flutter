@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:cook_it/pages/addproduct.dart';
 import 'package:cook_it/pages/fridge.dart';
 import 'package:flutter/material.dart';

@@ -67,10 +67,10 @@ class DBHelper {
   Future<List<Product>> getProductsByCategory(String category) async {
     var dbCursor = await db;
     List<Map> mappedList = await dbCursor!
-        .rawQuery('SELECT * FROM products WHERE category = $category');
-    List<Product> categoriedProducts = [];
+        .rawQuery('SELECT * FROM products WHERE category = "$category"');
+    List<Product> categoryProducts = [];
     for (int i = 0; i < mappedList.length; i++) {
-      categoriedProducts.add(Product(
+      categoryProducts.add(Product(
           id: mappedList[i]["id"],
           category: mappedList[i]["category"],
           product: mappedList[i]["product"],
@@ -80,6 +80,6 @@ class DBHelper {
           is_starred: mappedList[i]["is_starred"],
           banned: mappedList[i]["banned"]));
     }
-    return categoriedProducts;
+    return categoryProducts;
   }
 }

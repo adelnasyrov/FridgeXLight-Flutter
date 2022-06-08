@@ -15,6 +15,7 @@ class Categories extends StatefulWidget {
 class _CategoriesState extends State<Categories> {
   List<ProductCategory> categoryList = [];
   List<String> categoriesImages = [];
+  List<Product> productsList = [];
 
   @override
   void initState() {
@@ -79,8 +80,10 @@ class _CategoriesState extends State<Categories> {
                 size: 30,
               ),
               onTap: () {
+                // categoryList = [];
+                // fillCategoryList(categoryList[index].category);
                 Navigator.pushNamed(context, '/addproduct',
-                    arguments: {"category": categoryList[index].category});
+                    arguments: {"list": categoryList[index].category});
               },
             ),
             color: Colors.grey[900],
@@ -160,5 +163,15 @@ class _CategoriesState extends State<Categories> {
       }
     }
     return productsCategories;
+  }
+  
+  Future<void> fillCategoryList(category) async{
+    var dbHelper = DBHelper();
+    List<Product> productList = await dbHelper.getProductsByCategory(category);
+    setState(
+          () {
+        productsList = productList;
+      },
+    );
   }
 }

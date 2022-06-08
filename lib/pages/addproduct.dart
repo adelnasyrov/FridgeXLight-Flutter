@@ -13,44 +13,40 @@ class AddProduct extends StatefulWidget {
 
 class _AddProductState extends State<AddProduct> {
 
-  List<Product> productList = [];
-  String category = "";
+  List<Product> productsList = [];
 
   @override
   void initState() {
     super.initState();
-    getData();
   }
 
-  Future<void> getData() async {
+  Future<void> getData(category) async{
     var dbHelper = DBHelper();
-    List<Product> productsList = await dbHelper.getProductsByCategory(category);
-    setState(
-          () {
-        productList = productsList;
-      },
-    );
+    List<Product> productList = await dbHelper.getProductsByCategory(category);
+    setState((){
+      productsList = productList;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
-    category = arguments["category"];
-
+    String category = arguments["list"];
+    setState((){
+      getData(category);
+    });
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.grey[850],
-        title: Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: Text(
-            category,
-            style: const TextStyle(
+        title: const Text(
+            "Products",
+            style: TextStyle(
               fontFamily: "Comfort",
               color: Colors.white,
             ),
           ),
-        ),
         actions: [
           Padding(
               padding: const EdgeInsets.only(right: 30.0),
@@ -73,7 +69,7 @@ class _AddProductState extends State<AddProduct> {
             ),
             child: ListTile(
               title: Text(
-                productList[index].product.capitalize(),
+                productsList[index].product.capitalize(),
                 style: const TextStyle(
                     fontFamily: "Comfort", color: Colors.white54, fontSize: 15),
               ),
@@ -81,7 +77,7 @@ class _AddProductState extends State<AddProduct> {
             color: Colors.grey[900],
           );
         },
-        itemCount: productList.length,
+        itemCount: productsList.length,
       ),
     );
   }
