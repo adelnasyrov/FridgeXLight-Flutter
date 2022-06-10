@@ -9,6 +9,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
     theme: ThemeData(
+      unselectedWidgetColor: Colors.grey,
       appBarTheme: const AppBarTheme(
         iconTheme: IconThemeData(color: Colors.deepOrangeAccent),
       ),
@@ -66,8 +67,8 @@ class _MainPageState extends State<MainPage> {
               ),
               label: "Search"),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.menu_book_outlined,
+              icon: ImageIcon(
+                AssetImage("assets/images/folder_button.png"),
               ),
               label: "Recipes"),
         ],

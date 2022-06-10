@@ -12,20 +12,30 @@ class AddProduct extends StatefulWidget {
 }
 
 class _AddProductState extends State<AddProduct> {
-
   List<Product> productsList = [];
+  bool isSelected = false;
 
   @override
   void initState() {
     super.initState();
   }
 
-  Future<void> getData(category) async{
+  Future<void> getData(category) async {
     var dbHelper = DBHelper();
     List<Product> productList = await dbHelper.getProductsByCategory(category);
-    setState((){
+    setState(() {
       productsList = productList;
     });
+  }
+
+  Future<void> addProduct(product) async {
+    var dbHelper = DBHelper();
+    await dbHelper.addProduct(product);
+  }
+
+  Future<void> removeProduct(product) async {
+    var dbHelper = DBHelper();
+    await dbHelper.removeProduct(product);
   }
 
   @override
@@ -33,7 +43,7 @@ class _AddProductState extends State<AddProduct> {
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
     String category = arguments["list"];
-    setState((){
+    setState(() {
       getData(category);
     });
     return Scaffold(
@@ -41,23 +51,22 @@ class _AddProductState extends State<AddProduct> {
       appBar: AppBar(
         backgroundColor: Colors.grey[850],
         title: const Text(
-            "Products",
-            style: TextStyle(
-              fontFamily: "Comfort",
-              color: Colors.white,
-            ),
+          "Products",
+          style: TextStyle(
+            fontFamily: "Comfort",
+            color: Colors.white,
           ),
+        ),
         actions: [
           Padding(
-              padding: const EdgeInsets.only(right: 30.0),
-              child: GestureDetector(
-                onTap: () {},
-                child: const Icon(
-                  Icons.search,
-                  color: Colors.deepOrangeAccent,
-                  size: 25.0,
-                ),
-              )),
+            padding: const EdgeInsets.only(right: 30.0),
+            child: IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: MySearchDelegate());
+              },
+            ),
+          )
         ],
         centerTitle: false,
       ),
@@ -73,6 +82,26 @@ class _AddProductState extends State<AddProduct> {
                 style: const TextStyle(
                     fontFamily: "Comfort", color: Colors.white54, fontSize: 15),
               ),
+              trailing: Checkbox(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(3.0),
+                ),
+                value: productsList[index].is_in_fridge == 0 ? false : true,
+                onChanged: (val) {
+                  setState(
+                    () {
+                      productsList[index].is_in_fridge = val! ? 1 : 0;
+                      if (val) {
+                        addProduct(productsList[index].product);
+                      } else {
+                        removeProduct(productsList[index].product);
+                      }
+                    },
+                  );
+                },
+                activeColor: Colors.deepOrangeAccent,
+                checkColor: Colors.grey[900],
+              ),
             ),
             color: Colors.grey[900],
           );
@@ -81,4 +110,83 @@ class _AddProductState extends State<AddProduct> {
       ),
     );
   }
+}
+
+class MySearchDelegate extends SearchDelegate {
+  @override
+  List<Widget>? buildActions(BuildContext context) => [
+        IconButton(
+            onPressed: () {
+              if (query.isEmpty) {
+                close(context, null);
+              } else {
+                query = '';
+              }
+            },
+            icon: const Icon(Icons.clear))
+      ];
+
+  @override
+  Widget? buildLeading(BuildContext context) => IconButton(
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () => close(context, null),
+      );
+
+  @override
+  Widget buildResults(BuildContext context) => Container();
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<Product> suggestions = getSuggestions() as List<Product>;
+    
+    return ListView.builder(
+      itemBuilder: (context, index){
+        return Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          child: ListTile(
+            title: Text(
+              suggestions[index].product.capitalize(),
+              style: const TextStyle(
+                  fontFamily: "Comfort", color: Colors.white54, fontSize: 15),
+            ),
+            trailing: Checkbox(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(3.0),
+              ),
+              value: suggestions[index].is_in_fridge == 0 ? false : true,
+              onChanged: (val) {
+                suggestions[index].is_in_fridge = val! ? 1 : 0;
+                if (val) {
+                  addProduct(suggestions[index].product);
+                } else {
+                  removeProduct(suggestions[index].product);
+                }
+                },
+              activeColor: Colors.deepOrangeAccent,
+              checkColor: Colors.grey[900],
+            ),
+          ),
+          color: Colors.grey[900],
+        );
+      },
+      itemCount: suggestions.length,
+    );
+  }
+
+  Future<List<Product>> getSuggestions() async{
+      var dbHelper = DBHelper();
+      List<Product> productList = await dbHelper.getAllProducts();
+      return productList;
+  }
+Future<void> addProduct(product) async {
+  var dbHelper = DBHelper();
+  await dbHelper.addProduct(product);
+}
+
+Future<void> removeProduct(product) async {
+  var dbHelper = DBHelper();
+  await dbHelper.removeProduct(product);
+}
 }

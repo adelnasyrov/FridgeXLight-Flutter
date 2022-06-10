@@ -35,7 +35,26 @@ class DBHelper {
   Future<List<Product>> getProducts() async {
     var dbCursor = await db;
     List<Map> mappedList = await dbCursor!
-        .rawQuery('SELECT * FROM products WHERE is_in_fridge = 0');
+        .rawQuery('SELECT * FROM products WHERE is_in_fridge = 1');
+    List<Product> fridgeProducts = [];
+    for (int i = 0; i < mappedList.length; i++) {
+      fridgeProducts.add(Product(
+          id: mappedList[i]["id"],
+          category: mappedList[i]["category"],
+          product: mappedList[i]["product"],
+          is_in_fridge: mappedList[i]["is_in_fridge"],
+          is_in_cart: mappedList[i]["is_in_cart"],
+          amount: mappedList[i]["amount"],
+          is_starred: mappedList[i]["is_starred"],
+          banned: mappedList[i]["banned"]));
+    }
+    return fridgeProducts;
+  }
+
+  Future<List<Product>> getAllProducts() async {
+    var dbCursor = await db;
+    List<Map> mappedList = await dbCursor!
+        .rawQuery('SELECT * FROM products');
     List<Product> fridgeProducts = [];
     for (int i = 0; i < mappedList.length; i++) {
       fridgeProducts.add(Product(
@@ -81,5 +100,15 @@ class DBHelper {
           banned: mappedList[i]["banned"]));
     }
     return categoryProducts;
+  }
+
+  Future<void> addProduct(String product) async {
+    var dbCursor = await db;
+    await dbCursor!.rawQuery('UPDATE products SET is_in_fridge = 1 WHERE product = "$product"');
+  }
+
+  Future<void> removeProduct(String product) async {
+    var dbCursor = await db;
+    await dbCursor!.rawQuery('UPDATE products SET is_in_fridge = 0 WHERE product = "$product"');
   }
 }
