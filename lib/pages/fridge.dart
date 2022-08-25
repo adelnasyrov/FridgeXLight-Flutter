@@ -48,15 +48,13 @@ class _FridgeState extends State<Fridge> {
     var scaffold = Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.grey[850],
-        title: const Padding(
-          padding: EdgeInsets.only(left: 20),
-          child: Text(
-            "Fridge",
-            style: TextStyle(
-              fontFamily: "Comfort",
-              color: Colors.white,
-            ),
+        title: const Text(
+          "Fridge",
+          style: TextStyle(
+            fontFamily: "Comfort",
+            color: Colors.white,
           ),
         ),
         actions: [
@@ -71,7 +69,6 @@ class _FridgeState extends State<Fridge> {
                 ),
               )),
         ],
-        centerTitle: false,
       ),
       body: ListView.builder(
         itemBuilder: (BuildContext context, int index) {
