@@ -1,8 +1,9 @@
-import 'package:cook_it/DatabaseHelper/dbhelper.dart';
-import 'package:flutter/material.dart';
-import 'package:cook_it/models/product.dart';
 import 'dart:async';
+
+import 'package:cook_it/DatabaseHelper/dbhelper.dart';
 import 'package:cook_it/extentions/capitalize.dart';
+import 'package:cook_it/models/product.dart';
+import 'package:flutter/material.dart';
 
 class AddProduct extends StatefulWidget {
   const AddProduct({Key? key}) : super(key: key);
@@ -136,57 +137,21 @@ class MySearchDelegate extends SearchDelegate {
   Widget buildResults(BuildContext context) => Container();
 
   @override
-  Widget buildSuggestions(BuildContext context) {
-    List<Product> suggestions = getSuggestions() as List<Product>;
-    
-    return ListView.builder(
-      itemBuilder: (context, index){
-        return Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          child: ListTile(
-            title: Text(
-              suggestions[index].product.capitalize(),
-              style: const TextStyle(
-                  fontFamily: "Comfort", color: Colors.white54, fontSize: 15),
-            ),
-            trailing: Checkbox(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(3.0),
-              ),
-              value: suggestions[index].is_in_fridge == 0 ? false : true,
-              onChanged: (val) {
-                suggestions[index].is_in_fridge = val! ? 1 : 0;
-                if (val) {
-                  addProduct(suggestions[index].product);
-                } else {
-                  removeProduct(suggestions[index].product);
-                }
-                },
-              activeColor: Colors.deepOrangeAccent,
-              checkColor: Colors.grey[900],
-            ),
-          ),
-          color: Colors.grey[900],
-        );
-      },
-      itemCount: suggestions.length,
-    );
+  Widget buildSuggestions(BuildContext context) => Container();
+
+  Future<List<Product>> getSuggestions() async {
+    var dbHelper = DBHelper();
+    List<Product> productList = await dbHelper.getAllProducts();
+    return productList;
   }
 
-  Future<List<Product>> getSuggestions() async{
-      var dbHelper = DBHelper();
-      List<Product> productList = await dbHelper.getAllProducts();
-      return productList;
+  Future<void> addProduct(product) async {
+    var dbHelper = DBHelper();
+    await dbHelper.addProduct(product);
   }
-Future<void> addProduct(product) async {
-  var dbHelper = DBHelper();
-  await dbHelper.addProduct(product);
-}
 
-Future<void> removeProduct(product) async {
-  var dbHelper = DBHelper();
-  await dbHelper.removeProduct(product);
-}
+  Future<void> removeProduct(product) async {
+    var dbHelper = DBHelper();
+    await dbHelper.removeProduct(product);
+  }
 }

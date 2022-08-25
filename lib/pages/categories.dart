@@ -1,9 +1,10 @@
-import 'package:cook_it/DatabaseHelper/dbhelper.dart';
-import 'package:flutter/material.dart';
-import 'package:cook_it/models/product.dart';
 import 'dart:async';
-import 'package:cook_it/models/category.dart';
+
+import 'package:cook_it/DatabaseHelper/dbhelper.dart';
 import 'package:cook_it/extentions/capitalize.dart';
+import 'package:cook_it/models/category.dart';
+import 'package:cook_it/models/product.dart';
+import 'package:flutter/material.dart';
 
 class Categories extends StatefulWidget {
   const Categories({Key? key}) : super(key: key);
@@ -164,12 +165,12 @@ class _CategoriesState extends State<Categories> {
     }
     return productsCategories;
   }
-  
-  Future<void> fillCategoryList(category) async{
+
+  Future<void> fillCategoryList(category) async {
     var dbHelper = DBHelper();
     List<Product> productList = await dbHelper.getProductsByCategory(category);
     setState(
-          () {
+      () {
         productsList = productList;
       },
     );

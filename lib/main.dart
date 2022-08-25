@@ -1,29 +1,46 @@
 import 'package:cook_it/pages/addproduct.dart';
-import 'package:cook_it/pages/fridge.dart';
-import 'package:flutter/material.dart';
-import 'package:cook_it/pages/search.dart';
-import 'package:cook_it/pages/recipes.dart';
 import 'package:cook_it/pages/categories.dart';
+import 'package:cook_it/pages/fridge.dart';
+import 'package:cook_it/pages/recipes.dart';
+import 'package:cook_it/pages/search.dart';
+import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(
-    theme: ThemeData(
-      unselectedWidgetColor: Colors.grey,
-      appBarTheme: const AppBarTheme(
-        iconTheme: IconThemeData(color: Colors.deepOrangeAccent),
+  runApp(MyApp());
+}
+
+Future initialization(BuildContext? context) async {
+  await Future.delayed(Duration(seconds: 3));
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        unselectedWidgetColor: Colors.grey,
+        appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.deepOrangeAccent),
+        ),
       ),
-    ),
-    initialRoute: '/',
-    routes: {
-      '/': (context) => const MainPage(),
-      '/fridge': (context) => const Fridge(),
-      '/search': (context) => const Search(),
-      '/recipes': (context) => const Recipes(),
-      '/categories': (context) => const Categories(),
-      '/addproduct': (context) => const AddProduct(),
-    },
-  ));
+      routes: {
+        '/': (context) => const MainPage(),
+        '/fridge': (context) => const Fridge(),
+        '/search': (context) => const Search(),
+        '/recipes': (context) => const Recipes(),
+        '/categories': (context) => const Categories(),
+        '/addproduct': (context) => const AddProduct(),
+      },
+    );
+  }
 }
 
 class MainPage extends StatefulWidget {
