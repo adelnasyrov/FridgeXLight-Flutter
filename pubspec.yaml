@@ -58,6 +58,7 @@ flutter:
     - assets/images/search_button.png
     - assets/images/fridge_button.png
     - assets/images/folder_button.png
+    - assets/images/timer.png
     - assets/FridgeXX.db
     - assets/images/category1.png
     - assets/images/category2.png
