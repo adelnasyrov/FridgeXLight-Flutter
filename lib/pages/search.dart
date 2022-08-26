@@ -24,7 +24,7 @@ class _SearchState extends State<Search> {
     var dbHelper = DBHelper();
     List<Recipe> recipesList = await dbHelper.getRecipes();
     setState(
-          () {
+      () {
         recipeList = recipesList;
       },
     );
@@ -55,8 +55,9 @@ class _SearchState extends State<Search> {
               itemBuilder: (BuildContext ctx, int index) {
                 return Container(
                   margin: EdgeInsets.all(10),
-                  height: 120,
+                  height: 80,
                   child: Stack(
+                    alignment: AlignmentDirectional.centerStart,
                     children: [
                       Positioned.fill(
                           child: ClipRRect(
@@ -73,36 +74,32 @@ class _SearchState extends State<Search> {
                           right: 0,
                           left: 0,
                           child: Container(
-                            height: 100,
+                            height: 80,
                             decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    begin: Alignment.bottomCenter,
-                                    end: Alignment.topCenter,
-                                    colors: [
-                                      Colors.black.withOpacity(0.7),
-                                      Colors.transparent
-                                    ]),
+                                color: Colors.black.withOpacity(0.7),
                                 borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(20),
                                     bottomRight: Radius.circular(20))),
                           )),
-                      Positioned(
-                        bottom: 10,
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                            child: Text(
                               recipeList[index].recipe_name.capitalize(),
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
                                   fontFamily: "Comfort"),
-                            )
-                          ],
-                        ),
-                      )
+                            ),
+                          ),
+                          SizedBox(
+                            width: 100,
+                          )
+                        ],
+                      ),
                     ],
                   ),
                 );
