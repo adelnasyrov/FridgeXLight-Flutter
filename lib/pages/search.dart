@@ -55,7 +55,7 @@ class _SearchState extends State<Search> {
               itemBuilder: (BuildContext ctx, int index) {
                 return Container(
                   margin: EdgeInsets.all(10),
-                  height: 80,
+                  height: 70,
                   child: Stack(
                     alignment: AlignmentDirectional.centerStart,
                     children: [
@@ -74,7 +74,7 @@ class _SearchState extends State<Search> {
                           right: 0,
                           left: 0,
                           child: Container(
-                            height: 80,
+                            height: 70,
                             decoration: BoxDecoration(
                                 color: Colors.black.withOpacity(0.7),
                                 borderRadius: BorderRadius.only(
@@ -90,13 +90,40 @@ class _SearchState extends State<Search> {
                             child: Text(
                               recipeList[index].recipe_name.capitalize(),
                               style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
+                                  color: Colors.white70,
+                                  fontSize: 15,
                                   fontFamily: "Comfort"),
                             ),
                           ),
-                          SizedBox(
-                            width: 100,
+                          Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/fridge_button.png',
+                                height: 20,
+                                width: 20,
+                                color: Colors.white70,
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                recipeList[index].amountHave.toString() +
+                                    "/" +
+                                    (" "
+                                                .allMatches(recipeList[index]
+                                                    .recipe_value)
+                                                .length +
+                                            1)
+                                        .toString(),
+                                style: TextStyle(
+                                    color: Colors.white70,
+                                    fontSize: 12,
+                                    fontFamily: "Comfort"),
+                              ),
+                              SizedBox(
+                                width: 15,
+                              )
+                            ],
                           )
                         ],
                       ),
