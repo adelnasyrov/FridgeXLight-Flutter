@@ -55,7 +55,7 @@ class _SearchState extends State<Search> {
               itemBuilder: (BuildContext ctx, int index) {
                 return GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/addproduct');
+                    Navigator.pushNamed(context, '/recipe_screen');
                   },
                   child: Container(
                     margin:

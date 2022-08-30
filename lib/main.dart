@@ -1,6 +1,7 @@
 import 'package:cook_it/pages/addproduct.dart';
 import 'package:cook_it/pages/categories.dart';
 import 'package:cook_it/pages/fridge.dart';
+import 'package:cook_it/pages/recipe_screen.dart';
 import 'package:cook_it/pages/recipes.dart';
 import 'package:cook_it/pages/search.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,7 @@ class _MyAppState extends State<MyApp> {
         '/recipes': (context) => const Recipes(),
         '/categories': (context) => const Categories(),
         '/addproduct': (context) => const AddProduct(),
+        '/recipe_screen': (context) => const RecipeScreen(),
       },
     );
   }
