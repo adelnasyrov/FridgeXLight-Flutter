@@ -1,4 +1,4 @@
-import 'package:cook_it/extentions/capitalize.dart';
+import 'package:cook_it/extensions/capitalize.dart';
 import 'package:cook_it/models/recipe.dart';
 import 'package:flutter/material.dart';
 

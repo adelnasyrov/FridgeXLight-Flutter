@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:cook_it/DatabaseHelper/dbhelper.dart';
-import 'package:cook_it/extentions/capitalize.dart';
+import 'package:cook_it/extensions/capitalize.dart';
 import 'package:cook_it/models/product.dart';
 import 'package:flutter/material.dart';
 
@@ -60,7 +60,7 @@ class _AddProductState extends State<AddProduct> {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 30.0),
+            padding: const EdgeInsets.only(right: 20.0),
             child: IconButton(
               icon: const Icon(Icons.search),
               onPressed: () {
@@ -69,7 +69,7 @@ class _AddProductState extends State<AddProduct> {
             ),
           )
         ],
-        centerTitle: false,
+        centerTitle: true,
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:cook_it/DatabaseHelper/dbhelper.dart';
-import 'package:cook_it/extentions/capitalize.dart';
+import 'package:cook_it/extensions/capitalize.dart';
 import 'package:cook_it/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -59,7 +59,7 @@ class _FridgeState extends State<Fridge> {
         ),
         actions: [
           Padding(
-              padding: const EdgeInsets.only(right: 30.0),
+              padding: const EdgeInsets.only(right: 20.0),
               child: GestureDetector(
                 onTap: () {},
                 child: const Icon(
@@ -162,40 +162,40 @@ class _FridgeState extends State<Fridge> {
         productsCategories.add("assets/images/category9.png");
       } else if (productsList[i].category == "Сладости" ||
           productsList[i].category == "Sweets") {
-        productsCategories.add("assets/images/category21.png");
+        productsCategories.add("assets/images/category10.png");
       } else if (productsList[i].category == "Безалкогольные напитки" ||
           productsList[i].category == "Soft drinks") {
-        productsCategories.add("assets/images/category10.png");
+        productsCategories.add("assets/images/category11.png");
       } else if (productsList[i].category == "Бобовые культуры" ||
           productsList[i].category == "Legumes") {
-        productsCategories.add("assets/images/category11.png");
+        productsCategories.add("assets/images/category12.png");
       } else if (productsList[i].category == "Грибы" ||
           productsList[i].category == "Mushrooms") {
-        productsCategories.add("assets/images/category12.png");
+        productsCategories.add("assets/images/category13.png");
       } else if (productsList[i].category == "Морепродукты" ||
           productsList[i].category == "Seafood") {
-        productsCategories.add("assets/images/category13.png");
+        productsCategories.add("assets/images/category14.png");
       } else if (productsList[i].category == "Мука" ||
           productsList[i].category == "Flour") {
-        productsCategories.add("assets/images/category14.png");
+        productsCategories.add("assets/images/category15.png");
       } else if (productsList[i].category == "Орехи и семечки" ||
           productsList[i].category == "Nuts and seeds") {
-        productsCategories.add("assets/images/category15.png");
+        productsCategories.add("assets/images/category16.png");
       } else if (productsList[i].category == "Сухофрукты" ||
           productsList[i].category == "Dried fruits") {
-        productsCategories.add("assets/images/category16.png");
+        productsCategories.add("assets/images/category17.png");
       } else if (productsList[i].category == "Сыр" ||
           productsList[i].category == "Cheese") {
-        productsCategories.add("assets/images/category17.png");
+        productsCategories.add("assets/images/category18.png");
       } else if (productsList[i].category == "Ягоды" ||
           productsList[i].category == "Berries") {
-        productsCategories.add("assets/images/category18.png");
+        productsCategories.add("assets/images/category19.png");
       } else if (productsList[i].category == "Масла" ||
           productsList[i].category == "Oils") {
-        productsCategories.add("assets/images/category19.png");
+        productsCategories.add("assets/images/category20.png");
       } else if (productsList[i].category == "Другое" ||
           productsList[i].category == "Others") {
-        productsCategories.add("assets/images/category20.png");
+        productsCategories.add("assets/images/category21.png");
       }
     }
     return productsCategories;

@@ -69,7 +69,6 @@ flutter:
     - assets/images/category7.png
     - assets/images/category8.png
     - assets/images/category9.png
-    - assets/images/category21.png
     - assets/images/category10.png
     - assets/images/category11.png
     - assets/images/category12.png
@@ -81,6 +80,7 @@ flutter:
     - assets/images/category18.png
     - assets/images/category19.png
     - assets/images/category20.png
+    - assets/images/category21.png
     - assets/images/splash.png
     - assets/images/fridge.png
     - assets/images/recipes/recipe_1.jpg
