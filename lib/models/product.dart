@@ -8,13 +8,14 @@ class Product {
   int? is_starred;
   int banned;
 
-  Product(
-      {required this.id,
-      required this.category,
-      required this.product,
-      required this.is_in_fridge,
-      required this.is_in_cart,
-      required this.amount,
-      this.is_starred,
-      required this.banned});
+  Product({
+    required this.id,
+    required this.category,
+    required this.product,
+    required this.is_in_fridge,
+    required this.is_in_cart,
+    required this.amount,
+    this.is_starred,
+    required this.banned,
+  });
 }

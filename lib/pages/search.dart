@@ -2,7 +2,7 @@ import 'package:cook_it/extensions/capitalize.dart';
 import 'package:cook_it/models/recipe.dart';
 import 'package:flutter/material.dart';
 
-import '../DatabaseHelper/dbhelper.dart';
+import '../DatabaseHelper/database_helper.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);

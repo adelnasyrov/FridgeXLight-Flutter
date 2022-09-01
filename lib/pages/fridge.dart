@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cook_it/DatabaseHelper/dbhelper.dart';
+import 'package:cook_it/DatabaseHelper/database_helper.dart';
 import 'package:cook_it/extensions/capitalize.dart';
 import 'package:cook_it/models/product.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,7 @@ class _FridgeState extends State<Fridge> {
     List<Product> productsList = await dbHelper.getProducts();
     List<String> productsCategories = await getImages(productsList);
     setState(
-      () {
+          () {
         fridgeList = productsList;
         categoriesImage = productsCategories;
       },
