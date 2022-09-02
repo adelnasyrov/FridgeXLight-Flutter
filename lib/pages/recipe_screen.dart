@@ -75,6 +75,25 @@ class _RecipeScreenState extends State<RecipeScreen>
               ),
             ),
           ),
+          Padding(
+            padding: EdgeInsets.all(15.0),
+            child: Container(
+              width: double.maxFinite,
+              height: 300,
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  Text(
+                    "тут будут ингридиенты",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text("тут будет рецепт",
+                      style: TextStyle(color: Colors.white)),
+                  Text("тут будет инфа", style: TextStyle(color: Colors.white))
+                ],
+              ),
+            ),
+          )
         ],
       ),
       backgroundColor: Colors.black,
