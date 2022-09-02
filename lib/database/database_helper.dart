@@ -130,7 +130,7 @@ class DBHelper {
       for (var elem in products) {
         if (ids.contains(elem)) amount += 1;
       }
-      if (amount / max_amount > 0.15) {
+      if (amount / max_amount > 0.32) {
         recipes.add(Recipe(
             id: mappedList[i]["id"],
             category_global: mappedList[i]["category_global"],

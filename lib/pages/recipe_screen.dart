@@ -8,7 +8,8 @@ class RecipeScreen extends StatefulWidget {
   State<RecipeScreen> createState() => _RecipeScreenState();
 }
 
-class _RecipeScreenState extends State<RecipeScreen> {
+class _RecipeScreenState extends State<RecipeScreen>
+    with TickerProviderStateMixin {
   List<Recipe> recipeList = [];
 
   @override
@@ -16,20 +17,65 @@ class _RecipeScreenState extends State<RecipeScreen> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
+    TabController _tabController = TabController(length: 3, vsync: this);
+
+    final arguments = (ModalRoute.of(context)?.settings.arguments ??
+        <String, dynamic>{}) as Map;
+    Recipe recipe = arguments["recipe"];
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.grey[850],
-        title: const Text(
-          "Search",
+        title: Text(
+          recipe.recipe_name,
           style: TextStyle(
             fontFamily: "Comfort",
             color: Colors.white,
           ),
         ),
+      ),
+      body: Column(
+        children: [
+          Container(
+            height: 250,
+            child:
+                Stack(alignment: AlignmentDirectional.centerStart, children: [
+              Positioned.fill(
+                  child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    'assets/images/recipes/recipe_' +
+                        (recipe.id).toString() +
+                        '.jpg',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )),
+            ]),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 10, right: 10),
+            child: Container(
+              height: 50,
+              child: TabBar(
+                unselectedLabelColor: Colors.grey,
+                labelColor: Colors.deepOrangeAccent,
+                indicatorColor: Colors.deepOrangeAccent,
+                labelStyle: TextStyle(fontFamily: "Comfort", fontSize: 15),
+                controller: _tabController,
+                tabs: [
+                  Tab(text: "Ingredients"),
+                  Tab(text: "Recipe"),
+                  Tab(text: "Info"),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
       backgroundColor: Colors.black,
     );

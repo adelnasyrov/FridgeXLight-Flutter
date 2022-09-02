@@ -2,7 +2,7 @@ import 'package:cook_it/extensions/capitalize.dart';
 import 'package:cook_it/models/recipe.dart';
 import 'package:flutter/material.dart';
 
-import '../DatabaseHelper/database_helper.dart';
+import '../database/database_helper.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -55,11 +55,12 @@ class _SearchState extends State<Search> {
               itemBuilder: (BuildContext ctx, int index) {
                 return GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/recipe_screen');
+                    Navigator.pushNamed(context, '/recipe_screen',
+                        arguments: {"recipe": recipeList[index]});
                   },
                   child: Container(
-                    margin:
-                        EdgeInsets.only(top: 7, left: 10, right: 10, bottom: 7),
+                    margin: EdgeInsets.only(
+                        top: 10, left: 10, right: 10, bottom: 7),
                     height: 70,
                     child: Stack(
                       alignment: AlignmentDirectional.centerStart,

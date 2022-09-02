@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cook_it/DatabaseHelper/database_helper.dart';
+import 'package:cook_it/database/database_helper.dart';
 import 'package:cook_it/extensions/capitalize.dart';
 import 'package:cook_it/models/product.dart';
 import 'package:flutter/material.dart';
@@ -88,6 +88,7 @@ class _FridgeState extends State<Fridge> {
               setState(() {
                 removeProduct(fridgeList[index].product);
                 fridgeList.removeAt(index);
+                categoriesImage.removeAt(index);
               });
             },
             key: Key(fridgeList[index].product),

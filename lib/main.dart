@@ -1,4 +1,4 @@
-import 'package:cook_it/pages/addproduct.dart';
+import 'package:cook_it/pages/add_product.dart';
 import 'package:cook_it/pages/categories.dart';
 import 'package:cook_it/pages/fridge.dart';
 import 'package:cook_it/pages/recipe_screen.dart';
