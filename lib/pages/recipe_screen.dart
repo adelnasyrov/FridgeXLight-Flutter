@@ -84,7 +84,7 @@ class _RecipeScreenState extends State<RecipeScreen>
                 controller: _tabController,
                 children: [
                   Text(
-                    "тут будут ингридиенты",
+                    "тут будут ингридиентs",
                     style: TextStyle(color: Colors.white),
                   ),
                   Text("тут будет рецепт",
