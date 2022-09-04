@@ -159,13 +159,13 @@ class DBHelper {
 
   Future<List<String>> getIngredients(Recipe recipe) async {
     var dbCursor = await db;
-    final recipe_ingridients = recipe.recipe.split(" ");
-    List<String> ingridients = [];
-    for (int i = 0; i < recipe_ingridients.length; i++) {
+    final recipe_ingredients = recipe.recipe.split(" ");
+    List<String> ingredients = [];
+    for (int i = 0; i < recipe_ingredients.length; i++) {
       List<Map> mappedList = await dbCursor!.rawQuery(
-          'SELECT * FROM products WHERE id = "$recipe_ingridients[i]"');
+          'SELECT * FROM products WHERE id = "$recipe_ingredients[i]"');
     }
     List<Map> mappedList = await dbCursor!.rawQuery('SELECT * FROM recipes');
-    return ingridients;
+    return ingredients;
   }
 }
