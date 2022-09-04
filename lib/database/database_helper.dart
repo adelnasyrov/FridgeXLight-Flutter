@@ -19,8 +19,8 @@ class DBHelper {
   }
 
   initDB() async {
-    io.Directory documnetsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documnetsDirectory.path, "FridgeXX.db");
+    io.Directory documentsDirectory = await getApplicationDocumentsDirectory();
+    String path = join(documentsDirectory.path, "FridgeXX.db");
     bool dbExists = await io.File(path).exists();
     if (!dbExists) {
       ByteData data = await rootBundle.load(join("assets", "FridgeXX.db"));
@@ -155,5 +155,17 @@ class DBHelper {
         (a, b) => a.percentageAmountHave.compareTo(b.percentageAmountHave));
     recipes = recipes.reversed.toList();
     return recipes;
+  }
+
+  Future<List<String>> getIngredients(Recipe recipe) async {
+    var dbCursor = await db;
+    final recipe_ingridients = recipe.recipe.split(" ");
+    List<String> ingridients = [];
+    for (int i = 0; i < recipe_ingridients.length; i++) {
+      List<Map> mappedList = await dbCursor!.rawQuery(
+          'SELECT * FROM products WHERE id = "$recipe_ingridients[i]"');
+    }
+    List<Map> mappedList = await dbCursor!.rawQuery('SELECT * FROM recipes');
+    return ingridients;
   }
 }

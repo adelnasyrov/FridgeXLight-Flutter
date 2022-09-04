@@ -83,10 +83,7 @@ class _RecipeScreenState extends State<RecipeScreen>
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  Text(
-                    "тут будут ингридиентs",
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  Container(),
                   Text("тут будет рецепт",
                       style: TextStyle(color: Colors.white)),
                   Text("тут будет инфа", style: TextStyle(color: Colors.white))
