@@ -1,6 +1,8 @@
 import 'package:cook_it/models/recipe.dart';
 import 'package:flutter/material.dart';
 
+import '../database/database_helper.dart';
+
 class RecipeScreen extends StatefulWidget {
   const RecipeScreen({Key? key}) : super(key: key);
 
@@ -10,11 +12,20 @@ class RecipeScreen extends StatefulWidget {
 
 class _RecipeScreenState extends State<RecipeScreen>
     with TickerProviderStateMixin {
-  List<Recipe> recipeList = [];
+  List<String> ingredientsList = [];
 
   @override
   void initState() {
     super.initState();
+  }
+
+  Future<void> getData(recipe) async {
+    var dbHelper = DBHelper();
+    List<String> productList = await dbHelper.getIngredients(recipe);
+    print(productList);
+    setState(() {
+      ingredientsList = productList;
+    });
   }
 
   @override
@@ -24,6 +35,9 @@ class _RecipeScreenState extends State<RecipeScreen>
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
     Recipe recipe = arguments["recipe"];
+    setState(() {
+      getData(recipe);
+    });
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -83,7 +97,17 @@ class _RecipeScreenState extends State<RecipeScreen>
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  Container(),
+                  Container(
+                    child: ListView.builder(
+                      itemCount: ingredientsList.length,
+                      itemBuilder: (BuildContext ctx, int index) {
+                        return Text(
+                          ingredientsList[index],
+                          style: TextStyle(fontSize: 20, fontFamily: "Comfort"),
+                        );
+                      },
+                    ),
+                  ),
                   Text("тут будет рецепт",
                       style: TextStyle(color: Colors.white)),
                   Text("тут будет инфа", style: TextStyle(color: Colors.white))
