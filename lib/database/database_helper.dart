@@ -167,7 +167,7 @@ class DBHelper {
       print(id);
       List<Map> mappedList =
           await dbCursor!.rawQuery('SELECT * FROM products WHERE id = $id');
-      ingredients.add(mappedList[i]["product"].toString());
+      ingredients.add(mappedList[i]["id"].toString());
     }
     return ingredients;
   }
