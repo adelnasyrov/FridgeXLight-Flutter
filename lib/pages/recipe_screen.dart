@@ -21,23 +21,26 @@ class _RecipeScreenState extends State<RecipeScreen>
 
   Future<void> getData(recipe) async {
     var dbHelper = DBHelper();
-    List<String> productList = await dbHelper.getIngredients(recipe);
-    print(productList);
+    final recipe_ingredients = recipe.recipe.split(" ");
+    List<String> ingredients = [];
+    for (int i = 0; i < recipe_ingredients.length; i++) {
+      int id = int.parse(recipe_ingredients[i]);
+      String product = await dbHelper.getProductById(id);
+      ingredients.add(product);
+    }
     setState(() {
-      ingredientsList = productList;
+      ingredientsList = ingredientsList;
     });
   }
-
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
-
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
     Recipe recipe = arguments["recipe"];
-    setState(() {
-      getData(recipe);
-    });
+    // setState(() {
+    //   getData(recipe);
+    // });
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
