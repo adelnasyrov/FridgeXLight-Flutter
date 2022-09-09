@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cook_it/models/recipe.dart';
 import 'package:flutter/material.dart';
 
@@ -12,11 +14,31 @@ class RecipeScreen extends StatefulWidget {
 
 class _RecipeScreenState extends State<RecipeScreen>
     with TickerProviderStateMixin {
+  late Timer _timer;
+  int _start = 10;
   List<String> ingredientsList = [];
 
   @override
   void initState() {
     super.initState();
+  }
+
+  void startTimer() {
+    const oneSec = const Duration(seconds: 1);
+    _timer = new Timer.periodic(
+      oneSec,
+      (Timer timer) {
+        if (_start == 0) {
+          setState(() {
+            timer.cancel();
+          });
+        } else {
+          setState(() {
+            _start--;
+          });
+        }
+      },
+    );
   }
 
   Future<void> getData(recipe) async {
@@ -32,6 +54,7 @@ class _RecipeScreenState extends State<RecipeScreen>
       ingredientsList = ingredientsList;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
@@ -56,7 +79,7 @@ class _RecipeScreenState extends State<RecipeScreen>
       body: Column(
         children: [
           Container(
-            height: 250,
+            height: 300,
             child:
                 Stack(alignment: AlignmentDirectional.centerStart, children: [
               Positioned.fill(
@@ -68,10 +91,10 @@ class _RecipeScreenState extends State<RecipeScreen>
                     'assets/images/recipes/recipe_' +
                         (recipe.id).toString() +
                         '.jpg',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              )),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  )),
             ]),
           ),
           Padding(
@@ -101,14 +124,19 @@ class _RecipeScreenState extends State<RecipeScreen>
                 controller: _tabController,
                 children: [
                   Container(
-                    child: ListView.builder(
-                      itemCount: ingredientsList.length,
-                      itemBuilder: (BuildContext ctx, int index) {
-                        return Text(
-                          ingredientsList[index],
-                          style: TextStyle(fontSize: 20, fontFamily: "Comfort"),
-                        );
-                      },
+                    child: Column(
+                      children: <Widget>[
+                        RaisedButton(
+                          onPressed: () {
+                            startTimer();
+                          },
+                          child: Text(
+                            "start",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        Text("$_start", style: TextStyle(color: Colors.white))
+                      ],
                     ),
                   ),
                   Text("тут будет рецепт",
