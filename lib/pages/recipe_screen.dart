@@ -123,22 +123,7 @@ class _RecipeScreenState extends State<RecipeScreen>
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        RaisedButton(
-                          onPressed: () {
-                            startTimer();
-                          },
-                          child: Text(
-                            "start",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        Text("$_start", style: TextStyle(color: Colors.white))
-                      ],
-                    ),
-                  ),
+                  Container(),
                   Text("тут будет рецепт",
                       style: TextStyle(color: Colors.white)),
                   Text("тут будет инфа", style: TextStyle(color: Colors.white))
