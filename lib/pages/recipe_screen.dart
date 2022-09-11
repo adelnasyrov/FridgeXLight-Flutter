@@ -14,8 +14,6 @@ class RecipeScreen extends StatefulWidget {
 
 class _RecipeScreenState extends State<RecipeScreen>
     with TickerProviderStateMixin {
-  late Timer _timer;
-  int _start = 10;
   List<String> ingredientsList = [];
 
   @override
@@ -23,23 +21,6 @@ class _RecipeScreenState extends State<RecipeScreen>
     super.initState();
   }
 
-  void startTimer() {
-    const oneSec = const Duration(seconds: 1);
-    _timer = new Timer.periodic(
-      oneSec,
-      (Timer timer) {
-        if (_start == 0) {
-          setState(() {
-            timer.cancel();
-          });
-        } else {
-          setState(() {
-            _start--;
-          });
-        }
-      },
-    );
-  }
 
   Future<void> getData(recipe) async {
     var dbHelper = DBHelper();
@@ -123,7 +104,15 @@ class _RecipeScreenState extends State<RecipeScreen>
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  Container(),
+                  Container(
+                    child: Text(
+                      recipe.recipe,
+                      style: TextStyle(
+                          color: Colors.white54,
+                          fontFamily: "Comfort",
+                          fontSize: 15),
+                    ),
+                  ),
                   Text("тут будет рецепт",
                       style: TextStyle(color: Colors.white)),
                   Text("тут будет инфа", style: TextStyle(color: Colors.white))
