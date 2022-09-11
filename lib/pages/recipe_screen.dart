@@ -21,8 +21,7 @@ class _RecipeScreenState extends State<RecipeScreen>
     super.initState();
   }
 
-
-  Future<void> getData(recipe) async {
+  Future<List<String>> getData(recipe) async {
     var dbHelper = DBHelper();
     final recipe_ingredients = recipe.recipe.split(" ");
     List<String> ingredients = [];
@@ -31,9 +30,7 @@ class _RecipeScreenState extends State<RecipeScreen>
       String product = await dbHelper.getProductById(id);
       ingredients.add(product);
     }
-    setState(() {
-      ingredientsList = ingredientsList;
-    });
+    return ingredients;
   }
 
   @override
@@ -42,6 +39,8 @@ class _RecipeScreenState extends State<RecipeScreen>
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
     Recipe recipe = arguments["recipe"];
+    Future<List<String>> ingredientsList = getData(recipe);
+    print(ingredientsList.toString());
     // setState(() {
     //   getData(recipe);
     // });
@@ -72,10 +71,10 @@ class _RecipeScreenState extends State<RecipeScreen>
                     'assets/images/recipes/recipe_' +
                         (recipe.id).toString() +
                         '.jpg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  )),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )),
             ]),
           ),
           Padding(
