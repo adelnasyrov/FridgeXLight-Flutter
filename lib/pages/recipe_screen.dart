@@ -21,7 +21,7 @@ class _RecipeScreenState extends State<RecipeScreen>
     super.initState();
   }
 
-  Future<List<String>> getData(recipe) async {
+  Future<void> getData(recipe) async {
     var dbHelper = DBHelper();
     final recipe_ingredients = recipe.recipe.split(" ");
     List<String> ingredients = [];
@@ -30,7 +30,9 @@ class _RecipeScreenState extends State<RecipeScreen>
       String product = await dbHelper.getProductById(id);
       ingredients.add(product);
     }
-    return ingredients;
+    setState(() {
+      ingredientsList = ingredients;
+    });
   }
 
   @override
@@ -39,11 +41,7 @@ class _RecipeScreenState extends State<RecipeScreen>
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
     Recipe recipe = arguments["recipe"];
-    Future<List<String>> ingredientsList = getData(recipe);
-    print(ingredientsList.toString());
-    // setState(() {
-    //   getData(recipe);
-    // });
+    getData(recipe);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -90,7 +88,7 @@ class _RecipeScreenState extends State<RecipeScreen>
                 tabs: [
                   Tab(text: "Ingredients"),
                   Tab(text: "Recipe"),
-                  Tab(text: "Info"),
+                  Tab(text: "Information"),
                 ],
               ),
             ),
@@ -104,14 +102,16 @@ class _RecipeScreenState extends State<RecipeScreen>
                 controller: _tabController,
                 children: [
                   Container(
-                    child: Text(
-                      recipe.recipe,
-                      style: TextStyle(
-                          color: Colors.white54,
-                          fontFamily: "Comfort",
-                          fontSize: 15),
-                    ),
-                  ),
+                      child: ListView.builder(
+                          itemCount: ingredientsList.length,
+                          itemBuilder: (context, index) {
+                            return Text(
+                              ingredientsList[index],
+                              style: TextStyle(
+                                color: Colors.white54,
+                              ),
+                            );
+                          })),
                   Text("тут будет рецепт",
                       style: TextStyle(color: Colors.white)),
                   Text("тут будет инфа", style: TextStyle(color: Colors.white))

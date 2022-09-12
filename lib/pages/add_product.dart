@@ -44,9 +44,7 @@ class _AddProductState extends State<AddProduct> {
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
     String category = arguments["list"];
-    setState(() {
-      getData(category);
-    });
+    getData(category);
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
