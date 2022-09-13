@@ -88,7 +88,7 @@ class _RecipeScreenState extends State<RecipeScreen>
                 tabs: [
                   Tab(text: "Ingredients"),
                   Tab(text: "Recipe"),
-                  Tab(text: "Information"),
+                  Tab(text: "Info"),
                 ],
               ),
             ),
