@@ -21,7 +21,7 @@ class _RecipeScreenState extends State<RecipeScreen>
     super.initState();
   }
 
-  Future<void> getData(recipe) async {
+  Future<List<String>> getData(recipe) async {
     var dbHelper = DBHelper();
     final recipe_ingredients = recipe.recipe.split(" ");
     List<String> ingredients = [];
@@ -30,10 +30,14 @@ class _RecipeScreenState extends State<RecipeScreen>
       String product = await dbHelper.getProductById(id);
       ingredients.add(product);
     }
-    setState(() {
-      ingredientsList = ingredients;
-    });
+    return ingredients;
   }
+
+  // Future<List> convertFutureListToList(recipe) async {
+  //   Future<List> _futureOfList = getData(recipe);
+  //   List list = await _futureOfList ;
+  //   return list;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +45,8 @@ class _RecipeScreenState extends State<RecipeScreen>
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
     Recipe recipe = arguments["recipe"];
-    getData(recipe);
+    // List<String> ingredientsList = convertFutureListToList(recipe) as List<String>;
+    // getData(recipe);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -112,8 +117,11 @@ class _RecipeScreenState extends State<RecipeScreen>
                               ),
                             );
                           })),
-                  Text("тут будет рецепт",
-                      style: TextStyle(color: Colors.white)),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Text(recipe.actions,
+                        style: TextStyle(color: Colors.white)),
+                  ),
                   Text("тут будет инфа", style: TextStyle(color: Colors.white))
                 ],
               ),
