@@ -45,6 +45,7 @@ class _RecipeScreenState extends State<RecipeScreen>
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
     Recipe recipe = arguments["recipe"];
+    String recipe_actions = recipe.actions.replaceAll("\n", "\n\n");
     // List<String> ingredientsList = convertFutureListToList(recipe) as List<String>;
     // getData(recipe);
     return Scaffold(
@@ -99,7 +100,7 @@ class _RecipeScreenState extends State<RecipeScreen>
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(15.0),
+            padding: EdgeInsets.only(left: 20, top: 10, right: 20),
             child: Container(
               width: double.maxFinite,
               height: 300,
@@ -119,10 +120,71 @@ class _RecipeScreenState extends State<RecipeScreen>
                           })),
                   SingleChildScrollView(
                     scrollDirection: Axis.vertical,
-                    child: Text(recipe.actions,
-                        style: TextStyle(color: Colors.white)),
+                    child: Text(
+                      recipe_actions,
+                      style: TextStyle(
+                        color: Colors.white54,
+                        fontFamily: "Comfort",
+                        fontSize: 14,
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
                   ),
-                  Text("тут будет инфа", style: TextStyle(color: Colors.white))
+                  Container(
+                    width: 300,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Container(
+                                width: 230,
+                                height: 80,
+                                child: Card(
+                                  child: Text("info1"),
+                                  color: Colors.grey[800],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Container(
+                                width: 230,
+                                height: 80,
+                                child: Card(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
+                                  color: Colors.grey[800],
+                                  child: Text(
+                                    "info1",
+                                    style: TextStyle(color: Colors.white54),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Container(
+                                width: 230,
+                                height: 80,
+                                child: Card(
+                                  child: Text("info1"),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
