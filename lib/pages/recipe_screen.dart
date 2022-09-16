@@ -193,7 +193,7 @@ class _RecipeScreenState extends State<RecipeScreen>
                                                 fontSize: 12),
                                             textAlign: TextAlign.center)),
                                     Image.asset(
-                                      'assets/images/timer.png',
+                                      'assets/images/proteins.png',
                                       height: 24,
                                       width: 24,
                                       color: Colors.white54,
@@ -203,7 +203,8 @@ class _RecipeScreenState extends State<RecipeScreen>
                                         padding:
                                             EdgeInsets.only(top: 8, bottom: 8),
                                         child: Text(
-                                            recipe.time.toString() + " мин",
+                                            recipe.proteins.toString() +
+                                                " г/100г",
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontFamily: "Comfort",

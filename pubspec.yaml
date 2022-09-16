@@ -60,6 +60,7 @@ flutter:
     - assets/images/folder_button.png
     - assets/images/timer.png
     - assets/images/calories.png
+    - assets/images/proteins.png
     - assets/FridgeXX.db
     - assets/images/category1.png
     - assets/images/category2.png
