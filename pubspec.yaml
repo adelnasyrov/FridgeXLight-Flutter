@@ -61,6 +61,7 @@ flutter:
     - assets/images/timer.png
     - assets/images/calories.png
     - assets/images/proteins.png
+    - assets/images/fats.png
     - assets/FridgeXX.db
     - assets/images/category1.png
     - assets/images/category2.png
