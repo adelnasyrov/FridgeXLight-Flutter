@@ -62,6 +62,7 @@ flutter:
     - assets/images/calories.png
     - assets/images/proteins.png
     - assets/images/carbohydrates.png
+    - assets/images/link.png
     - assets/images/fats.png
     - assets/FridgeXX.db
     - assets/images/category1.png
