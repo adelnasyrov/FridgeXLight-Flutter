@@ -172,7 +172,7 @@ class _RecipeScreenState extends State<RecipeScreen>
                                                 fontSize: 12),
                                             textAlign: TextAlign.center)),
                                   ]),
-                                  color: Colors.grey[800],
+                                  color: Colors.grey[850],
                                 ),
                               ),
                               Container(
@@ -211,7 +211,45 @@ class _RecipeScreenState extends State<RecipeScreen>
                                                 fontSize: 12),
                                             textAlign: TextAlign.center)),
                                   ]),
-                                  color: Colors.grey[800],
+                                  color: Colors.grey[850],
+                                ),
+                              ),
+                              Container(
+                                width: 230,
+                                height: 90,
+                                child: Card(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(12))),
+                                  color: Colors.grey[850],
+                                  child: Column(children: [
+                                    Padding(
+                                        padding:
+                                            EdgeInsets.only(top: 8, bottom: 8),
+                                        child: Text("Углеводы",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontFamily: "Comfort",
+                                                fontSize: 12),
+                                            textAlign: TextAlign.center)),
+                                    Image.asset(
+                                      'assets/images/carbohydrates.png',
+                                      height: 24,
+                                      width: 24,
+                                      color: Colors.white54,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    Padding(
+                                        padding:
+                                            EdgeInsets.only(top: 8, bottom: 8),
+                                        child: Text(
+                                            recipe.fats.toString() + " г/100г",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontFamily: "Comfort",
+                                                fontSize: 12),
+                                            textAlign: TextAlign.center)),
+                                  ]),
                                 ),
                               )
                             ],
@@ -227,7 +265,7 @@ class _RecipeScreenState extends State<RecipeScreen>
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(12))),
-                                  color: Colors.grey[800],
+                                  color: Colors.grey[850],
                                   child: Column(children: [
                                     Padding(
                                         padding:
@@ -266,7 +304,7 @@ class _RecipeScreenState extends State<RecipeScreen>
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(12))),
-                                  color: Colors.grey[800],
+                                  color: Colors.grey[850],
                                   child: Column(children: [
                                     Padding(
                                         padding:
@@ -288,8 +326,7 @@ class _RecipeScreenState extends State<RecipeScreen>
                                         padding:
                                             EdgeInsets.only(top: 8, bottom: 8),
                                         child: Text(
-                                            recipe.fats.toString() +
-                                                " ккал/100г",
+                                            recipe.fats.toString() + " г/100г",
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontFamily: "Comfort",
@@ -297,7 +334,7 @@ class _RecipeScreenState extends State<RecipeScreen>
                                             textAlign: TextAlign.center)),
                                   ]),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
