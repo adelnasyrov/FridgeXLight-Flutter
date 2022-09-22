@@ -1,6 +1,13 @@
 import 'dart:async';
 
 import 'package:cook_it/models/recipe.dart';
+import 'package:cook_it/widgets/calories_card.dart';
+import 'package:cook_it/widgets/carbohydrates_card.dart';
+import 'package:cook_it/widgets/categories_card.dart';
+import 'package:cook_it/widgets/fats_card.dart';
+import 'package:cook_it/widgets/proteins_card.dart';
+import 'package:cook_it/widgets/source_card.dart';
+import 'package:cook_it/widgets/time_card.dart';
 import 'package:flutter/material.dart';
 
 import '../database/database_helper.dart';
@@ -63,23 +70,25 @@ class _RecipeScreenState extends State<RecipeScreen>
       body: Column(
         children: [
           Container(
-            height: 200,
-            child:
-                Stack(alignment: AlignmentDirectional.centerStart, children: [
-              Positioned.fill(
-                  child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.asset(
-                    'assets/images/recipes/recipe_' +
-                        (recipe.id).toString() +
-                        '.jpg',
-                    fit: BoxFit.cover,
+            height: 250,
+            child: Stack(
+              alignment: AlignmentDirectional.centerStart,
+              children: [
+                Positioned.fill(
+                    child: Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.asset(
+                      'assets/images/recipes/recipe_' +
+                          (recipe.id).toString() +
+                          '.jpg',
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-              )),
-            ]),
+                )),
+              ],
+            ),
           ),
           Padding(
             padding: EdgeInsets.only(left: 10, right: 10),
@@ -99,326 +108,72 @@ class _RecipeScreenState extends State<RecipeScreen>
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 10, top: 10, right: 10),
-            child: Container(
-              width: double.maxFinite,
-              height: 480,
-              child: TabBarView(
-                controller: _tabController,
-                children: [
-                  Container(
-                      child: ListView.builder(
-                          itemCount: ingredientsList.length,
-                          itemBuilder: (context, index) {
-                            return Text(
-                              ingredientsList[index],
-                              style: TextStyle(
-                                color: Colors.white54,
-                              ),
-                            );
-                          })),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Text(
-                      recipe_actions,
-                      style: TextStyle(
-                        color: Colors.white54,
-                        fontFamily: "Comfort",
-                        fontSize: 14,
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(left: 10, top: 10, right: 10),
+              child: Container(
+                width: double.maxFinite,
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [
+                    Container(
+                        child: ListView.builder(
+                            itemCount: ingredientsList.length,
+                            itemBuilder: (context, index) {
+                              return Text(
+                                ingredientsList[index],
+                                style: TextStyle(
+                                  color: Colors.white54,
+                                ),
+                              );
+                            })),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 20),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Text(
+                          recipe_actions,
+                          style: TextStyle(
+                            color: Colors.white54,
+                            fontFamily: "Comfort",
+                            fontSize: 14,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
                       ),
-                      textAlign: TextAlign.start,
                     ),
-                  ),
-                  Container(
-                    width: 300,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            children: [
-                              Container(
-                                width: 230,
-                                height: 90,
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(12))),
-                                  child: Column(children: [
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 8, bottom: 8),
-                                        child: Text("Время приготовления",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Comfort",
-                                                fontSize: 12),
-                                            textAlign: TextAlign.center)),
-                                    Image.asset(
-                                      'assets/images/timer.png',
-                                      height: 24,
-                                      width: 24,
-                                      color: Colors.white54,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 8, bottom: 8),
-                                        child: Text(
-                                            recipe.time.toString() + " мин",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Comfort",
-                                                fontSize: 12),
-                                            textAlign: TextAlign.center)),
-                                  ]),
-                                  color: Colors.grey[850],
-                                ),
+                    Container(
+                      child: SingleChildScrollView(
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  TimeCard(recipe: recipe),
+                                  ProteinsCard(recipe: recipe),
+                                  CarbohydratesCard(recipe: recipe),
+                                  SourceCard(recipe: recipe),
+                                ],
                               ),
-                              Container(
-                                width: 230,
-                                height: 90,
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(12))),
-                                  child: Column(children: [
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 8, bottom: 8),
-                                        child: Text("Белки",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Comfort",
-                                                fontSize: 12),
-                                            textAlign: TextAlign.center)),
-                                    Image.asset(
-                                      'assets/images/proteins.png',
-                                      height: 24,
-                                      width: 24,
-                                      color: Colors.white54,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 8, bottom: 8),
-                                        child: Text(
-                                            recipe.proteins.toString() +
-                                                " г/100г",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Comfort",
-                                                fontSize: 12),
-                                            textAlign: TextAlign.center)),
-                                  ]),
-                                  color: Colors.grey[850],
-                                ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  CaloriesCard(recipe: recipe),
+                                  FatsCard(recipe: recipe),
+                                  CategoriesCard(recipe: recipe),
+                                ],
                               ),
-                              Container(
-                                width: 230,
-                                height: 90,
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(12))),
-                                  color: Colors.grey[850],
-                                  child: Column(children: [
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 8, bottom: 8),
-                                        child: Text("Углеводы",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Comfort",
-                                                fontSize: 12),
-                                            textAlign: TextAlign.center)),
-                                    Image.asset(
-                                      'assets/images/carbohydrates.png',
-                                      height: 24,
-                                      width: 24,
-                                      color: Colors.white54,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 8, bottom: 8),
-                                        child: Text(
-                                            recipe.fats.toString() + " г/100г",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Comfort",
-                                                fontSize: 12),
-                                            textAlign: TextAlign.center)),
-                                  ]),
-                                ),
-                              ),
-                              Container(
-                                width: 230,
-                                height: 90,
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(12))),
-                                  color: Colors.grey[850],
-                                  child: Column(children: [
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 8, bottom: 8),
-                                        child: Text("Источник",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Comfort",
-                                                fontSize: 12),
-                                            textAlign: TextAlign.center)),
-                                    Image.asset(
-                                      'assets/images/link.png',
-                                      height: 24,
-                                      width: 24,
-                                      color: Colors.white54,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 8, bottom: 8),
-                                        child: Text(recipe.source.toString(),
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Comfort",
-                                                fontSize: 12),
-                                            textAlign: TextAlign.center)),
-                                  ]),
-                                ),
-                              )
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Expanded(
-                          child: Column(
-                            children: [
-                              Container(
-                                width: 230,
-                                height: 90,
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(12))),
-                                  color: Colors.grey[850],
-                                  child: Column(children: [
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 8, bottom: 8),
-                                        child: Text("Калории",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Comfort",
-                                                fontSize: 12),
-                                            textAlign: TextAlign.center)),
-                                    Image.asset(
-                                      'assets/images/calories.png',
-                                      height: 24,
-                                      width: 24,
-                                      color: Colors.white54,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 8, bottom: 8),
-                                        child: Text(
-                                            recipe.calories.toString() +
-                                                " ккал/100г",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Comfort",
-                                                fontSize: 12),
-                                            textAlign: TextAlign.center)),
-                                  ]),
-                                ),
-                              ),
-                              Container(
-                                width: 230,
-                                height: 90,
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(12))),
-                                  color: Colors.grey[850],
-                                  child: Column(children: [
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 8, bottom: 8),
-                                        child: Text("Жиры",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Comfort",
-                                                fontSize: 12),
-                                            textAlign: TextAlign.center)),
-                                    Image.asset(
-                                      'assets/images/fats.png',
-                                      height: 24,
-                                      width: 24,
-                                      color: Colors.white54,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 8, bottom: 8),
-                                        child: Text(
-                                            recipe.fats.toString() + " г/100г",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Comfort",
-                                                fontSize: 12),
-                                            textAlign: TextAlign.center)),
-                                  ]),
-                                ),
-                              ),
-                              Container(
-                                width: 230,
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(12))),
-                                  color: Colors.grey[850],
-                                  child: Column(children: [
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 8, bottom: 8),
-                                        child: Text("Категории",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Comfort",
-                                                fontSize: 12),
-                                            textAlign: TextAlign.center)),
-                                    Image.asset(
-                                      'assets/images/folder_button.png',
-                                      height: 24,
-                                      width: 24,
-                                      color: Colors.white54,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 8, bottom: 8),
-                                        child: Text(
-                                            recipe.category_local.toString(),
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Comfort",
-                                                fontSize: 12),
-                                            textAlign: TextAlign.center)),
-                                  ]),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-          )
+          ),
         ],
       ),
       backgroundColor: Colors.black,
