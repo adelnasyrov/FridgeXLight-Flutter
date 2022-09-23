@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../models/recipe.dart';
+import '../../models/recipe.dart';
 
-class CaloriesCard extends StatelessWidget {
+class CategoriesCard extends StatelessWidget {
   Recipe recipe;
 
-  CaloriesCard({required this.recipe});
+  CategoriesCard({required this.recipe});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 230,
-      height: 90,
       child: Card(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(12))),
@@ -19,12 +18,12 @@ class CaloriesCard extends StatelessWidget {
         child: Column(children: [
           Padding(
               padding: EdgeInsets.only(top: 8, bottom: 8),
-              child: Text("Калории",
+              child: Text("Категории",
                   style: TextStyle(
                       color: Colors.white, fontFamily: "Comfort", fontSize: 12),
                   textAlign: TextAlign.center)),
           Image.asset(
-            'assets/images/calories.png',
+            'assets/images/folder_button.png',
             height: 24,
             width: 24,
             color: Colors.white54,
@@ -32,7 +31,7 @@ class CaloriesCard extends StatelessWidget {
           ),
           Padding(
               padding: EdgeInsets.only(top: 8, bottom: 8),
-              child: Text(recipe.calories.toString() + " ккал/100г",
+              child: Text(recipe.category_local.toString(),
                   style: TextStyle(
                       color: Colors.white, fontFamily: "Comfort", fontSize: 12),
                   textAlign: TextAlign.center)),

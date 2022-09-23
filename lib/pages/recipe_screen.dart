@@ -1,16 +1,6 @@
-import 'dart:async';
-
 import 'package:cook_it/models/recipe.dart';
-import 'package:cook_it/widgets/calories_card.dart';
-import 'package:cook_it/widgets/carbohydrates_card.dart';
-import 'package:cook_it/widgets/categories_card.dart';
-import 'package:cook_it/widgets/fats_card.dart';
-import 'package:cook_it/widgets/proteins_card.dart';
-import 'package:cook_it/widgets/source_card.dart';
-import 'package:cook_it/widgets/time_card.dart';
+import 'package:cook_it/widgets/ingridient_info.dart';
 import 'package:flutter/material.dart';
-
-import '../database/database_helper.dart';
 
 class RecipeScreen extends StatefulWidget {
   const RecipeScreen({Key? key}) : super(key: key);
@@ -28,24 +18,6 @@ class _RecipeScreenState extends State<RecipeScreen>
     super.initState();
   }
 
-  Future<List<String>> getData(recipe) async {
-    var dbHelper = DBHelper();
-    final recipe_ingredients = recipe.recipe.split(" ");
-    List<String> ingredients = [];
-    for (int i = 0; i < recipe_ingredients.length; i++) {
-      int id = int.parse(recipe_ingredients[i]);
-      String product = await dbHelper.getProductById(id);
-      ingredients.add(product);
-    }
-    return ingredients;
-  }
-
-  // Future<List> convertFutureListToList(recipe) async {
-  //   Future<List> _futureOfList = getData(recipe);
-  //   List list = await _futureOfList ;
-  //   return list;
-  // }
-
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
@@ -53,8 +25,6 @@ class _RecipeScreenState extends State<RecipeScreen>
         <String, dynamic>{}) as Map;
     Recipe recipe = arguments["recipe"];
     String recipe_actions = recipe.actions.replaceAll("\n", "\n\n");
-    // List<String> ingredientsList = convertFutureListToList(recipe) as List<String>;
-    // getData(recipe);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -142,33 +112,7 @@ class _RecipeScreenState extends State<RecipeScreen>
                         ),
                       ),
                     ),
-                    Container(
-                      child: SingleChildScrollView(
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  TimeCard(recipe: recipe),
-                                  ProteinsCard(recipe: recipe),
-                                  CarbohydratesCard(recipe: recipe),
-                                  SourceCard(recipe: recipe),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  CaloriesCard(recipe: recipe),
-                                  FatsCard(recipe: recipe),
-                                  CategoriesCard(recipe: recipe),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
+                    IngridientInfo(recipe: recipe),
                   ],
                 ),
               ),

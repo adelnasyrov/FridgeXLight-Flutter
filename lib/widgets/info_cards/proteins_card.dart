@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../models/recipe.dart';
+import '../../models/recipe.dart';
 
-class FatsCard extends StatelessWidget {
+class ProteinsCard extends StatelessWidget {
   Recipe recipe;
 
-  FatsCard({required this.recipe});
+  ProteinsCard({required this.recipe});
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +15,15 @@ class FatsCard extends StatelessWidget {
       child: Card(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(12))),
-        color: Colors.grey[850],
         child: Column(children: [
           Padding(
               padding: EdgeInsets.only(top: 8, bottom: 8),
-              child: Text("Жиры",
+              child: Text("Белки",
                   style: TextStyle(
                       color: Colors.white, fontFamily: "Comfort", fontSize: 12),
                   textAlign: TextAlign.center)),
           Image.asset(
-            'assets/images/fats.png',
+            'assets/images/proteins.png',
             height: 24,
             width: 24,
             color: Colors.white54,
@@ -32,11 +31,12 @@ class FatsCard extends StatelessWidget {
           ),
           Padding(
               padding: EdgeInsets.only(top: 8, bottom: 8),
-              child: Text(recipe.fats.toString() + " г/100г",
+              child: Text(recipe.proteins.toString() + " г/100г",
                   style: TextStyle(
                       color: Colors.white, fontFamily: "Comfort", fontSize: 12),
                   textAlign: TextAlign.center)),
         ]),
+        color: Colors.grey[850],
       ),
     );
   }

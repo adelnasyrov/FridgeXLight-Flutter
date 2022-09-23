@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../models/recipe.dart';
+import '../../models/recipe.dart';
 
-class SourceCard extends StatelessWidget {
+class CarbohydratesCard extends StatelessWidget {
   Recipe recipe;
 
-  SourceCard({required this.recipe});
+  CarbohydratesCard({required this.recipe});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 230,
+      height: 90,
       child: Card(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(12))),
@@ -18,12 +19,12 @@ class SourceCard extends StatelessWidget {
         child: Column(children: [
           Padding(
               padding: EdgeInsets.only(top: 8, bottom: 8),
-              child: Text("Категории",
+              child: Text("Углеводы",
                   style: TextStyle(
                       color: Colors.white, fontFamily: "Comfort", fontSize: 12),
                   textAlign: TextAlign.center)),
           Image.asset(
-            'assets/images/folder_button.png',
+            'assets/images/carbohydrates.png',
             height: 24,
             width: 24,
             color: Colors.white54,
@@ -31,7 +32,7 @@ class SourceCard extends StatelessWidget {
           ),
           Padding(
               padding: EdgeInsets.only(top: 8, bottom: 8),
-              child: Text(recipe.category_local.toString(),
+              child: Text(recipe.fats.toString() + " г/100г",
                   style: TextStyle(
                       color: Colors.white, fontFamily: "Comfort", fontSize: 12),
                   textAlign: TextAlign.center)),
