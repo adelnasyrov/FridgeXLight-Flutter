@@ -9,10 +9,10 @@ import 'package:flutter/cupertino.dart';
 
 import '../models/recipe.dart';
 
-class IngridientInfo extends StatelessWidget {
+class RecipeInfo extends StatelessWidget {
   Recipe recipe;
 
-  IngridientInfo({required this.recipe});
+  RecipeInfo({required this.recipe});
 
   @override
   Widget build(BuildContext context) {

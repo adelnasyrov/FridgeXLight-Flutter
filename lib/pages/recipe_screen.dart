@@ -1,5 +1,7 @@
 import 'package:cook_it/models/recipe.dart';
-import 'package:cook_it/widgets/ingridient_info.dart';
+import 'package:cook_it/widgets/recipe_actions.dart';
+import 'package:cook_it/widgets/recipe_info.dart';
+import 'package:cook_it/widgets/recipe_ingredients.dart';
 import 'package:flutter/material.dart';
 
 class RecipeScreen extends StatefulWidget {
@@ -86,33 +88,9 @@ class _RecipeScreenState extends State<RecipeScreen>
                 child: TabBarView(
                   controller: _tabController,
                   children: [
-                    Container(
-                        child: ListView.builder(
-                            itemCount: ingredientsList.length,
-                            itemBuilder: (context, index) {
-                              return Text(
-                                ingredientsList[index],
-                                style: TextStyle(
-                                  color: Colors.white54,
-                                ),
-                              );
-                            })),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 20),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Text(
-                          recipe_actions,
-                          style: TextStyle(
-                            color: Colors.white54,
-                            fontFamily: "Comfort",
-                            fontSize: 14,
-                          ),
-                          textAlign: TextAlign.start,
-                        ),
-                      ),
-                    ),
-                    IngridientInfo(recipe: recipe),
+                    RecipeIngredients(ingredientsList: ingredientsList),
+                    RecipeActions(recipe_actions: recipe_actions),
+                    RecipeInfo(recipe: recipe),
                   ],
                 ),
               ),
