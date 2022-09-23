@@ -7,7 +7,7 @@ import 'package:cook_it/widgets/info_cards/source_card.dart';
 import 'package:cook_it/widgets/info_cards/time_card.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../models/recipe.dart';
+import '../../models/recipe.dart';
 
 class RecipeInfo extends StatelessWidget {
   Recipe recipe;

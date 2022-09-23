@@ -1,7 +1,7 @@
 import 'package:cook_it/models/recipe.dart';
-import 'package:cook_it/widgets/recipe_actions.dart';
-import 'package:cook_it/widgets/recipe_info.dart';
-import 'package:cook_it/widgets/recipe_ingredients.dart';
+import 'package:cook_it/widgets/description_pages/recipe_image.dart';
+import 'package:cook_it/widgets/recipe_description.dart';
+import 'package:cook_it/widgets/recipe_tabbar.dart';
 import 'package:flutter/material.dart';
 
 class RecipeScreen extends StatefulWidget {
@@ -41,61 +41,13 @@ class _RecipeScreenState extends State<RecipeScreen>
       ),
       body: Column(
         children: [
-          Container(
-            height: 250,
-            child: Stack(
-              alignment: AlignmentDirectional.centerStart,
-              children: [
-                Positioned.fill(
-                    child: Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Image.asset(
-                      'assets/images/recipes/recipe_' +
-                          (recipe.id).toString() +
-                          '.jpg',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                )),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10, right: 10),
-            child: Container(
-              height: 50,
-              child: TabBar(
-                unselectedLabelColor: Colors.grey,
-                labelColor: Colors.deepOrangeAccent,
-                indicatorColor: Colors.deepOrangeAccent,
-                labelStyle: TextStyle(fontFamily: "Comfort", fontSize: 15),
-                controller: _tabController,
-                tabs: [
-                  Tab(text: "Ingredients"),
-                  Tab(text: "Recipe"),
-                  Tab(text: "Info"),
-                ],
-              ),
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(left: 10, top: 10, right: 10),
-              child: Container(
-                width: double.maxFinite,
-                child: TabBarView(
-                  controller: _tabController,
-                  children: [
-                    RecipeIngredients(ingredientsList: ingredientsList),
-                    RecipeActions(recipe_actions: recipe_actions),
-                    RecipeInfo(recipe: recipe),
-                  ],
-                ),
-              ),
-            ),
-          ),
+          RecipeImage(recipe: recipe),
+          RecipeTabbar(tabController: _tabController),
+          RecipeDescription(
+              tabController: _tabController,
+              ingredientsList: ingredientsList,
+              recipe_actions: recipe_actions,
+              recipe: recipe),
         ],
       ),
       backgroundColor: Colors.black,
