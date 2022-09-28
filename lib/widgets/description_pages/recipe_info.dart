@@ -16,30 +16,34 @@ class RecipeInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SingleChildScrollView(
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  TimeCard(recipe: recipe),
-                  ProteinsCard(recipe: recipe),
-                  CarbohydratesCard(recipe: recipe),
-                  SourceCard(recipe: recipe),
-                ],
+    return Padding(
+      padding: EdgeInsets.all(20),
+      child: Container(
+        child: SingleChildScrollView(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column(
+                  children: [
+                    TimeCard(recipe: recipe),
+                    ProteinsCard(recipe: recipe),
+                    CarbohydratesCard(recipe: recipe),
+                    SourceCard(recipe: recipe),
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  CaloriesCard(recipe: recipe),
-                  FatsCard(recipe: recipe),
-                  CategoriesCard(recipe: recipe),
-                ],
+              Expanded(
+                child: Column(
+                  children: [
+                    CaloriesCard(recipe: recipe),
+                    FatsCard(recipe: recipe),
+                    CategoriesCard(recipe: recipe),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
