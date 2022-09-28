@@ -16,7 +16,7 @@ class RecipeIngredients extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> recipeValues = recipe.recipe_value.split(' ');
-    for (var i = 0; i < recipeValues.length; i++) {
+    for (var i = 0; i < ingredientsMeasure.length; i++) {
       if (recipeValues[i] == "-1") {
         recipeValues[i] = "";
         ingredientsMeasure[i] = "по вкусу";
