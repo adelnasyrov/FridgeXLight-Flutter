@@ -53,116 +53,118 @@ class _SearchState extends State<Search> {
                       "recipe": recipeList[index],
                     });
                   },
-                  child: Container(
-                    margin: EdgeInsets.only(
-                        top: 10, left: 10, right: 10, bottom: 7),
-                    height: 70,
-                    child: Stack(
-                      alignment: AlignmentDirectional.centerStart,
-                      children: [
-                        Positioned.fill(
-                            child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset(
-                            'assets/images/recipes/recipe_' +
-                                (recipeList[index].id).toString() +
-                                '.jpg',
-                            fit: BoxFit.cover,
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 15, left: 10, right: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey[900],
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      height: 100,
+                      child: Stack(
+                        alignment: AlignmentDirectional.centerStart,
+                        children: [
+                          Positioned.fill(
+                              left: 0,
+                              right: 270,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image.asset(
+                                  'assets/images/recipes/recipe_' +
+                                      (recipeList[index].id).toString() +
+                                      '.jpg',
+                                  fit: BoxFit.cover,
+                                ),
+                              )),
+                          Positioned.fill(
+                            left: 140,
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    recipeList[index].recipe_name.capitalize(),
+                                    style: TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 15,
+                                        fontFamily: "Comfort"),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/fridge_button.png',
+                                            height: 20,
+                                            width: 20,
+                                            color: Colors.white70,
+                                          ),
+                                          SizedBox(
+                                            width: 5,
+                                          ),
+                                          Text(
+                                            recipeList[index]
+                                                    .amountHave
+                                                    .toString() +
+                                                "/" +
+                                                (" "
+                                                            .allMatches(
+                                                                recipeList[
+                                                                        index]
+                                                                    .recipe_value)
+                                                            .length +
+                                                        1)
+                                                    .toString(),
+                                            style: TextStyle(
+                                                color: Colors.white70,
+                                                fontSize: 12,
+                                                fontFamily: "Comfort"),
+                                          ),
+                                          SizedBox(
+                                            width: 36,
+                                          )
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/timer.png',
+                                            height: 20,
+                                            width: 20,
+                                            color: Colors.white70,
+                                          ),
+                                          SizedBox(
+                                            width: 5,
+                                          ),
+                                          Text(
+                                            recipeList[index].time.toString() +
+                                                "мин",
+                                            style: TextStyle(
+                                                color: Colors.white70,
+                                                fontSize: 12,
+                                                fontFamily: "Comfort"),
+                                          ),
+                                          SizedBox(
+                                            width: 15,
+                                          )
+                                        ],
+                                      )
+                                    ])
+                              ],
+                            ),
                           ),
-                        )),
-                        Positioned(
-                            bottom: 0,
-                            right: 0,
-                            left: 0,
-                            child: Container(
-                              height: 70,
-                              decoration: BoxDecoration(
-                                  color: Colors.black.withOpacity(0.7),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(20),
-                                      bottomRight: Radius.circular(20))),
-                            )),
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Expanded(
-                              child: Text(
-                                recipeList[index].recipe_name.capitalize(),
-                                style: TextStyle(
-                                    color: Colors.white70,
-                                    fontSize: 15,
-                                    fontFamily: "Comfort"),
-                              ),
-                            ),
-                            Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/fridge_button.png',
-                                        height: 20,
-                                        width: 20,
-                                        color: Colors.white70,
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        recipeList[index]
-                                                .amountHave
-                                                .toString() +
-                                            "/" +
-                                            (" "
-                                                        .allMatches(
-                                                            recipeList[index]
-                                                                .recipe_value)
-                                                        .length +
-                                                    1)
-                                                .toString(),
-                                        style: TextStyle(
-                                            color: Colors.white70,
-                                            fontSize: 12,
-                                            fontFamily: "Comfort"),
-                                      ),
-                                      SizedBox(
-                                        width: 36,
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/timer.png',
-                                        height: 20,
-                                        width: 20,
-                                        color: Colors.white70,
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        recipeList[index].time.toString() +
-                                            "мин",
-                                        style: TextStyle(
-                                            color: Colors.white70,
-                                            fontSize: 12,
-                                            fontFamily: "Comfort"),
-                                      ),
-                                      SizedBox(
-                                        width: 15,
-                                      )
-                                    ],
-                                  )
-                                ])
-                          ],
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 );
