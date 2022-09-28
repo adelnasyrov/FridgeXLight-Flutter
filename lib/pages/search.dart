@@ -1,5 +1,6 @@
 import 'package:cook_it/extensions/capitalize.dart';
 import 'package:cook_it/models/recipe.dart';
+import 'package:cook_it/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../database/database_helper.dart';
@@ -13,6 +14,7 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   List<Recipe> recipeList = [];
+  List<String> ingredientsList = [];
 
   @override
   void initState() {
@@ -33,16 +35,8 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.grey[850],
-        title: const Text(
-          "Search",
-          style: TextStyle(
-            fontFamily: "Comfort",
-            color: Colors.white,
-          ),
-        ),
+      appBar: CustomAppBar(
+        heading: "Search",
       ),
       backgroundColor: Colors.black,
       body: Container(
@@ -55,8 +49,9 @@ class _SearchState extends State<Search> {
               itemBuilder: (BuildContext ctx, int index) {
                 return GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/recipe_screen',
-                        arguments: {"recipe": recipeList[index]});
+                    Navigator.pushNamed(context, '/recipe_screen', arguments: {
+                      "recipe": recipeList[index],
+                    });
                   },
                   child: Container(
                     margin: EdgeInsets.only(

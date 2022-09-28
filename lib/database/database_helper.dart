@@ -157,10 +157,36 @@ class DBHelper {
     return recipes;
   }
 
-  Future<String> getProductById(int id) async {
+  Future<List<String>> getProductsByRecipe(String recipe) async {
     var dbCursor = await db;
-    List<Map> mappedList =
-        await dbCursor!.rawQuery('SELECT * FROM products WHERE id = $id');
-    return mappedList[0]["product"].toString();
+    List<String> ingredientsList = [];
+    List<String> ingredients = recipe.split(" ");
+    for (var i = 0; i < ingredients.length; i++) {
+      int id = int.parse(ingredients[i]);
+      print(id);
+      List<Map> mappedList =
+          await dbCursor!.rawQuery('SELECT * FROM products WHERE id = $id');
+      String product = mappedList[0]["product"].toString();
+      ingredientsList.add(product);
+    }
+    return ingredientsList;
+  }
+
+  Future<List<String>> getVolumeMeasureByRecipe(String recipe) async {
+    var dbCursor = await db;
+    List<String> ingredientsMeasureList = [];
+    List<String> ingredients = recipe.split(" ");
+    for (var i = 0; i < ingredients.length; i++) {
+      int id = int.parse(ingredients[i]);
+      print(id);
+      List<Map> mappedList =
+          await dbCursor!.rawQuery('SELECT * FROM products WHERE id = $id');
+      String category = mappedList[0]["category"].toString();
+      List<Map> mappedList2 = await dbCursor
+          .rawQuery('SELECT * FROM categories WHERE category = "$category"');
+      String measure = mappedList2[0]["value"];
+      ingredientsMeasureList.add(measure);
+    }
+    return ingredientsMeasureList;
   }
 }

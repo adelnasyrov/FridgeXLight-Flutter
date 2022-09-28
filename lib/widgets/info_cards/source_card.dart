@@ -18,12 +18,12 @@ class SourceCard extends StatelessWidget {
         child: Column(children: [
           Padding(
               padding: EdgeInsets.only(top: 8, bottom: 8),
-              child: Text("Категории",
+              child: Text("Источник",
                   style: TextStyle(
                       color: Colors.white, fontFamily: "Comfort", fontSize: 12),
                   textAlign: TextAlign.center)),
           Image.asset(
-            'assets/images/folder_button.png',
+            'assets/images/link.png',
             height: 24,
             width: 24,
             color: Colors.white54,
@@ -31,7 +31,7 @@ class SourceCard extends StatelessWidget {
           ),
           Padding(
               padding: EdgeInsets.only(top: 8, bottom: 8),
-              child: Text(recipe.category_local.toString(),
+              child: Text(recipe.source.toString(),
                   style: TextStyle(
                       color: Colors.white, fontFamily: "Comfort", fontSize: 12),
                   textAlign: TextAlign.center)),
