@@ -46,43 +46,45 @@ class _CategoriesState extends State<Categories> {
         ),
         actions: [
           Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                onTap: () {},
-                child: const Icon(
-                  Icons.search,
-                  color: Colors.deepOrangeAccent,
-                  size: 25.0,
-                ),
-              )),
+            padding: const EdgeInsets.only(right: 10.0),
+            child: IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {},
+            ),
+          )
         ],
         centerTitle: true,
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {
-          return Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            child: ListTile(
-              title: Text(
-                categoryList[index].category.capitalize(),
-                style: const TextStyle(
-                    fontFamily: "Comfort", color: Colors.white54, fontSize: 15),
+          return Padding(
+            padding: EdgeInsets.only(top: 7, left: 10, right: 10),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
               ),
-              trailing: ImageIcon(
-                AssetImage("assets/images/category" +
-                    categoryList[index].id.toString() +
-                    ".png"),
-                color: Colors.white54,
-                size: 30,
+              child: ListTile(
+                title: Text(
+                  categoryList[index].category.capitalize(),
+                  style: const TextStyle(
+                      fontFamily: "Comfort",
+                      color: Colors.white54,
+                      fontSize: 15),
+                ),
+                trailing: ImageIcon(
+                  AssetImage("assets/images/category" +
+                      categoryList[index].id.toString() +
+                      ".png"),
+                  color: Colors.white54,
+                  size: 30,
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/addproduct',
+                      arguments: {"list": categoryList[index].category});
+                },
               ),
-              onTap: () {
-                Navigator.pushNamed(context, '/addproduct',
-                    arguments: {"list": categoryList[index].category});
-              },
+              color: Colors.grey[850],
             ),
-            color: Colors.grey[850],
           );
         },
         itemCount: categoryList.length,

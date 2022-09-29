@@ -144,45 +144,48 @@ class _FridgeState extends State<Fridge> {
               ),
             );
           }
-          return Dismissible(
-            direction: DismissDirection.endToStart,
-            onDismissed: (direction) {
-              Fluttertoast.showToast(
-                  msg: "Продукт " +
-                      '"' +
-                      "${fridgeList[index].product.capitalize()}" +
-                      '" ' +
-                      "был удален из холодильника", // message
-                  toastLength: Toast.LENGTH_SHORT, // length
-                  gravity: ToastGravity.BOTTOM, // location
-                  timeInSecForIosWeb: 1 // duration
-                  );
-              setState(() {
-                removeProduct(fridgeList[index].product);
-                fridgeList.removeAt(index);
-                categoriesImage.removeAt(index);
-              });
-            },
-            key: Key(fridgeList[index].product),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: ListTile(
-                title: Text(
-                  fridgeList[index].product.capitalize(),
-                  style: const TextStyle(
-                      fontFamily: "Comfort",
-                      color: Colors.white54,
-                      fontSize: 15),
+          return Padding(
+            padding: EdgeInsets.only(top: 7, left: 10, right: 10),
+            child: Dismissible(
+              direction: DismissDirection.endToStart,
+              onDismissed: (direction) {
+                Fluttertoast.showToast(
+                    msg: "Продукт " +
+                        '"' +
+                        "${fridgeList[index].product.capitalize()}" +
+                        '" ' +
+                        "был удален из холодильника", // message
+                    toastLength: Toast.LENGTH_SHORT, // length
+                    gravity: ToastGravity.BOTTOM, // location
+                    timeInSecForIosWeb: 1 // duration
+                    );
+                setState(() {
+                  removeProduct(fridgeList[index].product);
+                  fridgeList.removeAt(index);
+                  categoriesImage.removeAt(index);
+                });
+              },
+              key: Key(fridgeList[index].product),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
                 ),
-                trailing: ImageIcon(
-                  AssetImage(categoriesImage[index]),
-                  color: Colors.white54,
-                  size: 30,
+                child: ListTile(
+                  title: Text(
+                    fridgeList[index].product.capitalize(),
+                    style: const TextStyle(
+                        fontFamily: "Comfort",
+                        color: Colors.white54,
+                        fontSize: 15),
+                  ),
+                  trailing: ImageIcon(
+                    AssetImage(categoriesImage[index]),
+                    color: Colors.white54,
+                    size: 30,
+                  ),
                 ),
+                color: Colors.grey[850],
               ),
-              color: Colors.grey[850],
             ),
           );
         },

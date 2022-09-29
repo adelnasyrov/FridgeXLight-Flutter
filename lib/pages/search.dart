@@ -19,7 +19,7 @@ class _SearchState extends State<Search> {
   bool waiting = true;
 
   loadingAsyncTask() async {
-    getData();
+    await getData();
 
     setState(() {
       waiting = false;
@@ -28,25 +28,16 @@ class _SearchState extends State<Search> {
 
   @override
   void initState() {
-    loadingAsyncTask();
     super.initState();
+    loadingAsyncTask();
   }
 
   Future<void> getData() async {
     var dbHelper = DBHelper();
     List<Recipe> recipesList = await dbHelper.getRecipes();
-    List<String> recipesImages = [];
-    for (int i = 0; i <= recipeList.length; i++) {
-      recipesImages.add(
-        "assets/images/recipes/recipe_" +
-            (recipeList[i].id).toString() +
-            '.jpg',
-      );
-    }
     setState(
       () {
         recipeList = recipesList;
-        recipeImages = recipesImages;
       },
     );
   }
@@ -61,7 +52,8 @@ class _SearchState extends State<Search> {
       body: Container(
         child: waiting
             ? Center(
-                child: CircularProgressIndicator(),
+          child:
+                    CircularProgressIndicator(color: Colors.deepOrangeAccent),
               )
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
