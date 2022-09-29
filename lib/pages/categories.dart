@@ -34,9 +34,9 @@ class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        backgroundColor: Colors.grey[850],
+        backgroundColor: Colors.grey[800],
         title: const Text(
           "Categories",
           style: TextStyle(
@@ -82,7 +82,7 @@ class _CategoriesState extends State<Categories> {
                     arguments: {"list": categoryList[index].category});
               },
             ),
-            color: Colors.grey[900],
+            color: Colors.grey[850],
           );
         },
         itemCount: categoryList.length,

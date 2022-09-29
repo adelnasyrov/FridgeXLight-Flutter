@@ -189,4 +189,9 @@ class DBHelper {
     }
     return ingredientsMeasureList;
   }
+
+  Future<void> clearFridge() async {
+    var dbCursor = await db;
+    await dbCursor!.rawQuery('UPDATE products SET is_in_fridge = 0');
+  }
 }

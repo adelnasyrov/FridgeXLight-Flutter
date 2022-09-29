@@ -249,6 +249,10 @@ flutter:
     - family: Comfort
       fonts:
         - asset: fonts/Comfortaa-Regular.ttf
+
+    - family: Andika
+      fonts:
+        - asset: fonts/AndikaNewBasic-R.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

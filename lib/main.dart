@@ -5,6 +5,7 @@ import 'package:cook_it/pages/recipe_screen.dart';
 import 'package:cook_it/pages/recipes.dart';
 import 'package:cook_it/pages/search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,6 +63,8 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.grey[800]));
     return Scaffold(
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -71,7 +74,7 @@ class _MainPageState extends State<MainPage> {
         showUnselectedLabels: false,
         onTap: (index) => setState(() => currentIndex = index),
         currentIndex: currentIndex,
-        backgroundColor: Colors.grey[850],
+        backgroundColor: Colors.grey[800],
         fixedColor: Colors.deepOrangeAccent,
         unselectedItemColor: Colors.white70,
         items: const [

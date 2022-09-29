@@ -15,7 +15,7 @@ class CaloriesCard extends StatelessWidget {
       child: Card(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(12))),
-        color: Colors.grey[850],
+        color: Colors.grey[800],
         child: Column(children: [
           Padding(
               padding: EdgeInsets.only(top: 8, bottom: 8),

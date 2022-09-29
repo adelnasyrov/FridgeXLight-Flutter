@@ -61,7 +61,7 @@ class _RecipeScreenState extends State<RecipeScreen>
               recipe: recipe),
         ],
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.grey[900],
     );
   }
 }

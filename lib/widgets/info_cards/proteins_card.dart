@@ -36,7 +36,7 @@ class ProteinsCard extends StatelessWidget {
                       color: Colors.white, fontFamily: "Comfort", fontSize: 12),
                   textAlign: TextAlign.center)),
         ]),
-        color: Colors.grey[850],
+        color: Colors.grey[800],
       ),
     );
   }

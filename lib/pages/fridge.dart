@@ -28,11 +28,16 @@ class _FridgeState extends State<Fridge> {
     List<Product> productsList = await dbHelper.getProducts();
     List<String> productsCategories = await getImages(productsList);
     setState(
-          () {
+      () {
         fridgeList = productsList;
         categoriesImage = productsCategories;
       },
     );
+  }
+
+  Future<void> clearFridge() async {
+    var dbHelper = DBHelper();
+    await dbHelper.clearFridge();
   }
 
   Future<void> removeProduct(product) async {
@@ -46,10 +51,10 @@ class _FridgeState extends State<Fridge> {
       getData();
     });
     var scaffold = Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.grey[850],
+        backgroundColor: Colors.grey[800],
         title: const Text(
           "Fridge",
           style: TextStyle(
@@ -61,7 +66,64 @@ class _FridgeState extends State<Fridge> {
           Padding(
               padding: const EdgeInsets.only(right: 20.0),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  AlertDialog remove = AlertDialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    backgroundColor: Colors.grey[900],
+                    title: const Text(
+                      'Clear Fridge',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "Comfort",
+                          fontSize: 18),
+                    ),
+                    content: SingleChildScrollView(
+                      child: ListBody(
+                        children: const <Widget>[
+                          Text(
+                            'Do you want to delete all products from your Fridge?',
+                            style: TextStyle(
+                                color: Colors.white54,
+                                fontFamily: "Comfort",
+                                fontSize: 15),
+                          )
+                        ],
+                      ),
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        child: const Text(
+                          'No',
+                          style: TextStyle(color: Colors.deepOrangeAccent),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      TextButton(
+                        child: const Text(
+                          'Yes',
+                          style: TextStyle(color: Colors.deepOrangeAccent),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            clearFridge();
+                            fridgeList = [];
+                            categoriesImage = [];
+                          });
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return remove;
+                      });
+                },
                 child: const Icon(
                   Icons.delete,
                   color: Colors.deepOrangeAccent,
@@ -72,6 +134,16 @@ class _FridgeState extends State<Fridge> {
       ),
       body: ListView.builder(
         itemBuilder: (BuildContext context, int index) {
+          if (fridgeList.length == 0) {
+            return Container(
+              child: Center(
+                child: Text(
+                  "Add products to fridge by tapping + button",
+                  style: TextStyle(color: Colors.white54),
+                ),
+              ),
+            );
+          }
           return Dismissible(
             direction: DismissDirection.endToStart,
             onDismissed: (direction) {
@@ -84,7 +156,7 @@ class _FridgeState extends State<Fridge> {
                   toastLength: Toast.LENGTH_SHORT, // length
                   gravity: ToastGravity.BOTTOM, // location
                   timeInSecForIosWeb: 1 // duration
-                  );
+              );
               setState(() {
                 removeProduct(fridgeList[index].product);
                 fridgeList.removeAt(index);
@@ -110,7 +182,7 @@ class _FridgeState extends State<Fridge> {
                   size: 30,
                 ),
               ),
-              color: Colors.grey[900],
+              color: Colors.grey[850],
             ),
           );
         },

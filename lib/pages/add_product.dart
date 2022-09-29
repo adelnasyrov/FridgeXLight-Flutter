@@ -46,9 +46,9 @@ class _AddProductState extends State<AddProduct> {
     String category = arguments["list"];
     getData(category);
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        backgroundColor: Colors.grey[850],
+        backgroundColor: Colors.grey[800],
         title: const Text(
           "Products",
           style: TextStyle(
@@ -102,7 +102,7 @@ class _AddProductState extends State<AddProduct> {
                 checkColor: Colors.grey[900],
               ),
             ),
-            color: Colors.grey[900],
+            color: Colors.grey[850],
           );
         },
         itemCount: productsList.length,
