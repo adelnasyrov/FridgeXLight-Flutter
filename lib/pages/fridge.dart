@@ -156,7 +156,7 @@ class _FridgeState extends State<Fridge> {
                   toastLength: Toast.LENGTH_SHORT, // length
                   gravity: ToastGravity.BOTTOM, // location
                   timeInSecForIosWeb: 1 // duration
-              );
+                  );
               setState(() {
                 removeProduct(fridgeList[index].product);
                 fridgeList.removeAt(index);

@@ -17,6 +17,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           fontFamily: "Comfort",
           color: Colors.white,
         ),
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }
