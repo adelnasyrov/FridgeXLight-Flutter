@@ -1,8 +1,8 @@
 import 'package:cook_it/pages/add_product.dart';
+import 'package:cook_it/pages/catalog.dart';
 import 'package:cook_it/pages/categories.dart';
 import 'package:cook_it/pages/fridge.dart';
 import 'package:cook_it/pages/recipe_screen.dart';
-import 'package:cook_it/pages/recipes.dart';
 import 'package:cook_it/pages/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
         '/': (context) => const MainPage(),
         '/fridge': (context) => const Fridge(),
         '/search': (context) => const Search(),
-        '/recipes': (context) => const Recipes(),
+        '/catalog': (context) => const Catalog(),
         '/categories': (context) => const Categories(),
         '/addproduct': (context) => const AddProduct(),
         '/recipe_screen': (context) => const RecipeScreen(),
@@ -59,7 +59,7 @@ class _MainPageState extends State<MainPage> {
   final screens = [
     const Fridge(),
     const Search(),
-    const Recipes(),
+    const Catalog(),
   ];
 
   @override
@@ -93,7 +93,7 @@ class _MainPageState extends State<MainPage> {
               icon: ImageIcon(
                 AssetImage("assets/images/folder_button.png"),
               ),
-              label: "Recipes"),
+              label: "Catalog"),
         ],
       ),
     );
