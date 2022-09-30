@@ -67,7 +67,7 @@ class _RecipesState extends State<Recipes> {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Image.asset(
-                              'assets/images/recipes_categories/categ_2.jpg',
+                              'assets/images/recipes_categories/categ_3.jpg',
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -86,7 +86,26 @@ class _RecipesState extends State<Recipes> {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Image.asset(
-                              'assets/images/recipes_categories/categ_3.jpg',
+                              'assets/images/recipes_categories/categ_5.jpg',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        )),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height / 4,
+                    child: Stack(
+                      alignment: AlignmentDirectional.centerStart,
+                      children: [
+                        Positioned.fill(
+                            child: Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset(
+                              'assets/images/recipes_categories/categ_7.jpg',
                               fit: BoxFit.cover,
                             ),
                           ),
