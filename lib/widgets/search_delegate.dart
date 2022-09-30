@@ -31,11 +31,23 @@ class MySearchDelegate extends SearchDelegate {
   @override
   ThemeData appBarTheme(BuildContext context) {
     return ThemeData(
+      inputDecorationTheme: InputDecorationTheme(
+        focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.transparent)),
+      ),
+      textSelectionTheme: TextSelectionThemeData(
+        selectionHandleColor: Colors.deepOrangeAccent,
+      ),
+      hintColor: Colors.white54,
+      textTheme: TextTheme(
+          headline6: TextStyle(
+        color: Colors.white,
+        fontSize: 20,
+        fontFamily: "Comfort",
+      )),
       appBarTheme: AppBarTheme(
-          color: Colors.grey[800],
-          textTheme: TextTheme(headline1: TextStyle(color: Colors.white54))
-          // affects AppBar's background color/ affects the initial 'Search' text
-          ),
+        color: Colors.grey[800],
+      ),
     );
   }
 
@@ -58,56 +70,64 @@ class MySearchDelegate extends SearchDelegate {
       final input = query.toLowerCase();
       return result.contains(input);
     }).toList();
-    return StatefulBuilder(
-      builder: (BuildContext context, StateSetter setState) {
-        return Container(
-          color: Colors.grey[900],
-          child: ListView.builder(
-              itemCount: results.length,
-              itemBuilder: (context, index) {
-                final suggestion = results[index];
-                return Padding(
-                  padding: EdgeInsets.only(top: 7, left: 10, right: 10),
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: ListTile(
-                      title: Text(
-                        suggestion.product.capitalize(),
-                        style: const TextStyle(
-                            fontFamily: "Comfort",
-                            color: Colors.white54,
-                            fontSize: 15),
-                      ),
-                      trailing: Checkbox(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(3.0),
+    return query.length == 0
+        ? Container(color: Colors.grey[900])
+        : StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+              return Container(
+                color: Colors.grey[900],
+                child: ListView.builder(
+                    itemCount: results.length,
+                    itemBuilder: (context, index) {
+                      final suggestion = results[index];
+                      return Padding(
+                        padding: EdgeInsets.only(top: 7, left: 10, right: 10),
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: ListTile(
+                            title: Text(
+                              suggestion.product.capitalize(),
+                              style: const TextStyle(
+                                  fontFamily: "Comfort",
+                                  color: Colors.white54,
+                                  fontSize: 15),
+                            ),
+                            trailing: Theme(
+                              data: Theme.of(context).copyWith(
+                                unselectedWidgetColor: Colors.deepOrangeAccent,
+                              ),
+                              child: Checkbox(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(3.0),
+                                ),
+                                value:
+                                    suggestion.is_in_fridge == 0 ? false : true,
+                                onChanged: (val) {
+                                  setState(
+                                    () {
+                                      suggestion.is_in_fridge = val! ? 1 : 0;
+                                      if (val) {
+                                        addProduct(suggestion.product);
+                                      } else {
+                                        removeProduct(suggestion.product);
+                                      }
+                                    },
+                                  );
+                                },
+                                activeColor: Colors.deepOrangeAccent,
+                                checkColor: Colors.grey[900],
+                              ),
+                            ),
+                          ),
+                          color: Colors.grey[850],
                         ),
-                        value: suggestion.is_in_fridge == 0 ? false : true,
-                        onChanged: (val) {
-                          setState(
-                            () {
-                              suggestion.is_in_fridge = val! ? 1 : 0;
-                              if (val) {
-                                addProduct(suggestion.product);
-                              } else {
-                                removeProduct(suggestion.product);
-                              }
-                            },
-                          );
-                        },
-                        activeColor: Colors.deepOrangeAccent,
-                        checkColor: Colors.grey[900],
-                      ),
-                    ),
-                    color: Colors.grey[850],
-                  ),
-                );
-              }),
-        );
-      },
-    );
+                      );
+                    }),
+              );
+            },
+          );
   }
 
   Future<void> addProduct(product) async {

@@ -160,10 +160,9 @@ class DBHelper {
   Future<List<String>> getProductsByRecipe(String recipe) async {
     var dbCursor = await db;
     List<String> ingredientsList = [];
-    List<String> ingredients = recipe.split(" ");
+    List<String> ingredients = recipe.trim().split(" ");
     for (var i = 0; i < ingredients.length; i++) {
       int id = int.parse(ingredients[i]);
-      print(id);
       List<Map> mappedList =
           await dbCursor!.rawQuery('SELECT * FROM products WHERE id = $id');
       String product = mappedList[0]["product"].toString();
@@ -175,10 +174,10 @@ class DBHelper {
   Future<List<String>> getVolumeMeasureByRecipe(String recipe) async {
     var dbCursor = await db;
     List<String> ingredientsMeasureList = [];
-    List<String> ingredients = recipe.split(" ");
+    List<String> ingredients = recipe.trim().split(" ");
+    print(ingredients);
     for (var i = 0; i < ingredients.length; i++) {
       int id = int.parse(ingredients[i]);
-      print(id);
       List<Map> mappedList =
           await dbCursor!.rawQuery('SELECT * FROM products WHERE id = $id');
       String category = mappedList[0]["category"].toString();
