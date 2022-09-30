@@ -32,10 +32,36 @@ class _RecipesState extends State<Recipes> {
           centerTitle: true,
         ),
         backgroundColor: Colors.grey[900],
-        body: const Center(
-          child: Text(
-            "Recipes",
-            style: TextStyle(color: Colors.white54),
+        body: Container(
+          child: Row(
+            children: [
+              Column(
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height / 4,
+                    child: Stack(
+                      alignment: AlignmentDirectional.centerStart,
+                      children: [
+                        Positioned.fill(
+                            child: Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset(
+                              'assets/images/recipes_categories/categ_1.jpg',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        )),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              Column(
+                children: [],
+              )
+            ],
           ),
         ));
   }
