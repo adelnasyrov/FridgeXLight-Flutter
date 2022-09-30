@@ -5,6 +5,9 @@ import 'package:cook_it/extensions/capitalize.dart';
 import 'package:cook_it/models/category.dart';
 import 'package:flutter/material.dart';
 
+import '../models/product.dart';
+import '../widgets/search_delegate.dart';
+
 class Categories extends StatefulWidget {
   const Categories({Key? key}) : super(key: key);
 
@@ -13,6 +16,7 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
+  List<Product> suggestionList = [];
   List<ProductCategory> categoryList = [];
 
   @override
@@ -24,9 +28,11 @@ class _CategoriesState extends State<Categories> {
   Future<void> getData() async {
     var dbHelper = DBHelper();
     List<ProductCategory> categories = await dbHelper.getCategories();
+    List<Product> suggestions = await dbHelper.getAllProducts();
     setState(
       () {
         categoryList = categories;
+        suggestionList = suggestions;
       },
     );
   }
@@ -49,7 +55,11 @@ class _CategoriesState extends State<Categories> {
             padding: const EdgeInsets.only(right: 10.0),
             child: IconButton(
               icon: const Icon(Icons.search),
-              onPressed: () {},
+              onPressed: () {
+                showSearch(
+                    context: context,
+                    delegate: MySearchDelegate(suggestionList));
+              },
             ),
           )
         ],

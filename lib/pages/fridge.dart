@@ -16,11 +16,20 @@ class Fridge extends StatefulWidget {
 class _FridgeState extends State<Fridge> {
   List<Product> fridgeList = [];
   List<String> categoriesImage = [];
+  bool waiting = true;
+
+  loadingAsyncTask() async {
+    await getData();
+
+    setState(() {
+      waiting = false;
+    });
+  }
 
   @override
   void initState() {
     super.initState();
-    getData();
+    loadingAsyncTask();
   }
 
   Future<void> getData() async {
@@ -132,64 +141,71 @@ class _FridgeState extends State<Fridge> {
               )),
         ],
       ),
-      body: ListView.builder(
-        itemBuilder: (BuildContext context, int index) {
-          if (fridgeList.length == 0) {
-            return Container(
-              child: Center(
-                child: Text(
-                  "Add products to fridge by tapping + button",
-                  style: TextStyle(color: Colors.white54),
-                ),
-              ),
-            );
-          }
-          return Padding(
-            padding: EdgeInsets.only(top: 7, left: 10, right: 10),
-            child: Dismissible(
-              direction: DismissDirection.endToStart,
-              onDismissed: (direction) {
-                Fluttertoast.showToast(
-                    msg: "Продукт " +
-                        '"' +
-                        "${fridgeList[index].product.capitalize()}" +
-                        '" ' +
-                        "был удален из холодильника", // message
-                    toastLength: Toast.LENGTH_SHORT, // length
-                    gravity: ToastGravity.BOTTOM, // location
-                    timeInSecForIosWeb: 1 // duration
+      body: Container(
+        child: waiting
+            ? Center(
+                child:
+                    CircularProgressIndicator(color: Colors.deepOrangeAccent),
+              )
+            : ListView.builder(
+                itemBuilder: (BuildContext context, int index) {
+                  if (fridgeList.length == 0) {
+                    return Container(
+                      child: Center(
+                        child: Text(
+                          "Add products to fridge by tapping + button",
+                          style: TextStyle(color: Colors.white54),
+                        ),
+                      ),
                     );
-                setState(() {
-                  removeProduct(fridgeList[index].product);
-                  fridgeList.removeAt(index);
-                  categoriesImage.removeAt(index);
-                });
-              },
-              key: Key(fridgeList[index].product),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: ListTile(
-                  title: Text(
-                    fridgeList[index].product.capitalize(),
-                    style: const TextStyle(
-                        fontFamily: "Comfort",
-                        color: Colors.white54,
-                        fontSize: 15),
-                  ),
-                  trailing: ImageIcon(
-                    AssetImage(categoriesImage[index]),
-                    color: Colors.white54,
-                    size: 30,
-                  ),
-                ),
-                color: Colors.grey[850],
+                  }
+                  return Padding(
+                    padding: EdgeInsets.only(top: 7, left: 10, right: 10),
+                    child: Dismissible(
+                      direction: DismissDirection.endToStart,
+                      onDismissed: (direction) {
+                        Fluttertoast.showToast(
+                            msg: "Продукт " +
+                                '"' +
+                                "${fridgeList[index].product.capitalize()}" +
+                                '" ' +
+                                "был удален из холодильника", // message
+                            toastLength: Toast.LENGTH_SHORT, // length
+                            gravity: ToastGravity.BOTTOM, // location
+                            timeInSecForIosWeb: 1 // duration
+                            );
+                        setState(() {
+                          removeProduct(fridgeList[index].product);
+                          fridgeList.removeAt(index);
+                          categoriesImage.removeAt(index);
+                        });
+                      },
+                      key: Key(fridgeList[index].product),
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: ListTile(
+                          title: Text(
+                            fridgeList[index].product.capitalize(),
+                            style: const TextStyle(
+                                fontFamily: "Comfort",
+                                color: Colors.white54,
+                                fontSize: 15),
+                          ),
+                          trailing: ImageIcon(
+                            AssetImage(categoriesImage[index]),
+                            color: Colors.white54,
+                            size: 30,
+                          ),
+                        ),
+                        color: Colors.grey[850],
+                      ),
+                    ),
+                  );
+                },
+                itemCount: fridgeList.length,
               ),
-            ),
-          );
-        },
-        itemCount: fridgeList.length,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

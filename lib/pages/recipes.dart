@@ -20,13 +20,22 @@ class _RecipesState extends State<Recipes> {
               color: Colors.white,
             ),
           ),
-          centerTitle: false,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: IconButton(
+                icon: const Icon(Icons.search),
+                onPressed: () {},
+              ),
+            )
+          ],
+          centerTitle: true,
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.grey[900],
         body: const Center(
           child: Text(
             "Recipes",
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white54),
           ),
         ));
   }
