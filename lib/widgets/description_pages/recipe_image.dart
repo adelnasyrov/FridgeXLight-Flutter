@@ -10,7 +10,7 @@ class RecipeImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
+      height: MediaQuery.of(context).size.height / 4.5,
       child: Stack(
         alignment: AlignmentDirectional.centerStart,
         children: [
