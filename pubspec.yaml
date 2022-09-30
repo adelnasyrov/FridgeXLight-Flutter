@@ -233,6 +233,14 @@ flutter:
     - assets/images/recipes/recipe_143.jpg
     - assets/images/recipes/recipe_144.jpg
     - assets/images/recipes/recipe_145.jpg
+    - assets/images/recipe_categories/categ_1.jpg
+    - assets/images/recipe_categories/categ_2.jpg
+    - assets/images/recipe_categories/categ_3.jpg
+    - assets/images/recipe_categories/categ_4.jpg
+    - assets/images/recipe_categories/categ_5.jpg
+    - assets/images/recipe_categories/categ_6.jpg
+    - assets/images/recipe_categories/categ_7.jpg
+    - assets/images/recipe_categories/categ_8.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
