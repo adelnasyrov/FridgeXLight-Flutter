@@ -56,9 +56,6 @@ class _FridgeState extends State<Fridge> {
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      getData();
-    });
     var scaffold = Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(

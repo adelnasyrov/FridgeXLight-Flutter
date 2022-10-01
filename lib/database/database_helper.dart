@@ -4,6 +4,7 @@ import "dart:io" as io;
 import 'package:cook_it/models/category.dart';
 import 'package:cook_it/models/product.dart';
 import 'package:cook_it/models/recipe.dart';
+import 'package:cook_it/models/recipe_category_global.dart';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -192,5 +193,18 @@ class DBHelper {
   Future<void> clearFridge() async {
     var dbCursor = await db;
     await dbCursor!.rawQuery('UPDATE products SET is_in_fridge = 0');
+  }
+
+  Future<List<RecipeCategoryGlobal>> getRecipeCategoriesGlobal() async {
+    var dbCursor = await db;
+    List<Map> mappedList =
+        await dbCursor!.rawQuery('SELECT * FROM recipe_categories_global');
+    List<RecipeCategoryGlobal> recipeCategoriesLocal = [];
+    for (int i = 0; i < mappedList.length; i++) {
+      recipeCategoriesLocal.add(RecipeCategoryGlobal(
+          id: mappedList[i]["id"],
+          category_global: mappedList[i]["category_global"]));
+    }
+    return recipeCategoriesLocal;
   }
 }
