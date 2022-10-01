@@ -1,9 +1,9 @@
 import 'package:cook_it/models/recipe_category_global.dart';
-import 'package:cook_it/widgets/recipe_category.dart';
+import 'package:cook_it/widgets/recipe_global_category.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../database/database_helper.dart';
+import '../../database/database_helper.dart';
 
 class Catalog extends StatefulWidget {
   const Catalog({Key? key}) : super(key: key);
@@ -72,52 +72,54 @@ class _CatalogState extends State<Catalog> {
                     CircularProgressIndicator(color: Colors.deepOrangeAccent),
               )
             : Padding(
-                padding: EdgeInsets.only(top: 10),
+          padding: EdgeInsets.only(top: 10, bottom: 10),
                 child: Container(
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Expanded(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            RecipeCategory(
+                            RecipeGlobalCategory(
                                 category: categoriesList[0],
                                 image_address:
-                                    "assets/images/recipe_categories/categ_1.jpg"),
-                            RecipeCategory(
+                                    "assets/images/global_categories/categ_1.jpg"),
+                            RecipeGlobalCategory(
                                 category: categoriesList[2],
                                 image_address:
-                                    "assets/images/recipe_categories/categ_3.jpg"),
-                            RecipeCategory(
+                                    "assets/images/global_categories/categ_3.jpg"),
+                            RecipeGlobalCategory(
                                 category: categoriesList[4],
                                 image_address:
-                                    "assets/images/recipe_categories/categ_5.jpg"),
-                            RecipeCategory(
+                                    "assets/images/global_categories/categ_5.jpg"),
+                            RecipeGlobalCategory(
                                 category: categoriesList[6],
                                 image_address:
-                                    "assets/images/recipe_categories/categ_7.jpg"),
+                                    "assets/images/global_categories/categ_7.jpg"),
                           ],
                         ),
                       ),
                       Expanded(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            RecipeCategory(
+                            RecipeGlobalCategory(
                                 category: categoriesList[1],
                                 image_address:
-                                    "assets/images/recipe_categories/categ_2.jpg"),
-                            RecipeCategory(
+                                    "assets/images/global_categories/categ_2.jpg"),
+                            RecipeGlobalCategory(
                                 category: categoriesList[3],
                                 image_address:
-                                    "assets/images/recipe_categories/categ_4.jpg"),
-                            RecipeCategory(
+                                    "assets/images/global_categories/categ_4.jpg"),
+                            RecipeGlobalCategory(
                                 category: categoriesList[5],
                                 image_address:
-                                    "assets/images/recipe_categories/categ_6.jpg"),
-                            RecipeCategory(
+                                    "assets/images/global_categories/categ_6.jpg"),
+                            RecipeGlobalCategory(
                                 category: categoriesList[7],
                                 image_address:
-                                    "assets/images/recipe_categories/categ_8.jpg"),
+                                    "assets/images/global_categories/categ_8.jpg"),
                           ],
                         ),
                       )

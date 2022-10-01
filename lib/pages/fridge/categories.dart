@@ -5,8 +5,8 @@ import 'package:cook_it/extensions/capitalize.dart';
 import 'package:cook_it/models/category.dart';
 import 'package:flutter/material.dart';
 
-import '../models/product.dart';
-import '../widgets/search_delegate.dart';
+import '../../models/product.dart';
+import '../../widgets/search_delegate.dart';
 
 class Categories extends StatefulWidget {
   const Categories({Key? key}) : super(key: key);

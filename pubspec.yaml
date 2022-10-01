@@ -233,14 +233,42 @@ flutter:
     - assets/images/recipes/recipe_143.jpg
     - assets/images/recipes/recipe_144.jpg
     - assets/images/recipes/recipe_145.jpg
-    - assets/images/recipe_categories/categ_1.jpg
-    - assets/images/recipe_categories/categ_2.jpg
-    - assets/images/recipe_categories/categ_3.jpg
-    - assets/images/recipe_categories/categ_4.jpg
-    - assets/images/recipe_categories/categ_5.jpg
-    - assets/images/recipe_categories/categ_6.jpg
-    - assets/images/recipe_categories/categ_7.jpg
-    - assets/images/recipe_categories/categ_8.jpg
+    - assets/images/global_categories/categ_1.jpg
+    - assets/images/global_categories/categ_2.jpg
+    - assets/images/global_categories/categ_3.jpg
+    - assets/images/global_categories/categ_4.jpg
+    - assets/images/global_categories/categ_5.jpg
+    - assets/images/global_categories/categ_6.jpg
+    - assets/images/global_categories/categ_7.jpg
+    - assets/images/global_categories/categ_8.jpg
+    - assets/images/local_categories/podcateg_1.jpg
+    - assets/images/local_categories/podcateg_2.jpg
+    - assets/images/local_categories/podcateg_3.jpg
+    - assets/images/local_categories/podcateg_4.jpg
+    - assets/images/local_categories/podcateg_5.jpg
+    - assets/images/local_categories/podcateg_6.jpg
+    - assets/images/local_categories/podcateg_7.jpg
+    - assets/images/local_categories/podcateg_8.jpg
+    - assets/images/local_categories/podcateg_9.jpg
+    - assets/images/local_categories/podcateg_10.jpg
+    - assets/images/local_categories/podcateg_11.jpg
+    - assets/images/local_categories/podcateg_12.jpg
+    - assets/images/local_categories/podcateg_13.jpg
+    - assets/images/local_categories/podcateg_14.jpg
+    - assets/images/local_categories/podcateg_15.jpg
+    - assets/images/local_categories/podcateg_16.jpg
+    - assets/images/local_categories/podcateg_17.jpg
+    - assets/images/local_categories/podcateg_18.jpg
+    - assets/images/local_categories/podcateg_19.jpg
+    - assets/images/local_categories/podcateg_20.jpg
+    - assets/images/local_categories/podcateg_21.jpg
+    - assets/images/local_categories/podcateg_22.jpg
+    - assets/images/local_categories/podcateg_23.jpg
+    - assets/images/local_categories/podcateg_24.jpg
+    - assets/images/local_categories/podcateg_25.jpg
+    - assets/images/local_categories/podcateg_26.jpg
+    - assets/images/local_categories/podcateg_27.jpg
+    - assets/images/local_categories/podcateg_28.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

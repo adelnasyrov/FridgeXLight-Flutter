@@ -1,9 +1,10 @@
-import 'package:cook_it/pages/add_product.dart';
-import 'package:cook_it/pages/catalog.dart';
-import 'package:cook_it/pages/categories.dart';
-import 'package:cook_it/pages/fridge.dart';
-import 'package:cook_it/pages/recipe_screen.dart';
-import 'package:cook_it/pages/search.dart';
+import 'package:cook_it/pages/catalog/catalog.dart';
+import 'package:cook_it/pages/catalog/local_catalog.dart';
+import 'package:cook_it/pages/fridge/add_product.dart';
+import 'package:cook_it/pages/fridge/categories.dart';
+import 'package:cook_it/pages/fridge/fridge.dart';
+import 'package:cook_it/pages/search/recipe_screen.dart';
+import 'package:cook_it/pages/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -42,6 +43,7 @@ class _MyAppState extends State<MyApp> {
         '/categories': (context) => const Categories(),
         '/addproduct': (context) => const AddProduct(),
         '/recipe_screen': (context) => const RecipeScreen(),
+        '/local_catalog': (context) => const LocalCatalog(),
       },
     );
   }

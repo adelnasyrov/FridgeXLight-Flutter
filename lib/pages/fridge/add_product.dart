@@ -5,7 +5,7 @@ import 'package:cook_it/extensions/capitalize.dart';
 import 'package:cook_it/models/product.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/search_delegate.dart';
+import '../../widgets/search_delegate.dart';
 
 class AddProduct extends StatefulWidget {
   const AddProduct({Key? key}) : super(key: key);

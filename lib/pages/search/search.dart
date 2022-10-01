@@ -3,7 +3,7 @@ import 'package:cook_it/models/recipe.dart';
 import 'package:cook_it/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../database/database_helper.dart';
+import '../../database/database_helper.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);

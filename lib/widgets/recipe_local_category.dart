@@ -1,25 +1,26 @@
-import 'package:cook_it/models/recipe_category_global.dart';
+import 'package:cook_it/models/recipe_category_local.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class RecipeCategory extends StatelessWidget {
-  RecipeCategoryGlobal category;
+class RecipeLocalCategory extends StatelessWidget {
+  RecipeCategoryLocal categoryLocal;
   String image_address;
 
-  RecipeCategory({required this.category, required this.image_address});
+  RecipeLocalCategory(
+      {required this.categoryLocal, required this.image_address});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        height: MediaQuery.of(context).size.height / 5.1,
+        height: MediaQuery.of(context).size.height / 5.2,
         child: Stack(
           alignment: AlignmentDirectional.centerStart,
           children: [
             Positioned.fill(
                 child: Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: EdgeInsets.only(left: 5.0, right: 5.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: Image.asset(
@@ -30,7 +31,7 @@ class RecipeCategory extends StatelessWidget {
             )),
             Positioned(
                 child: Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: EdgeInsets.only(left: 5.0, right: 5.0),
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
@@ -48,10 +49,10 @@ class RecipeCategory extends StatelessWidget {
                 left: 10,
                 bottom: 10,
                 child: Padding(
-                  padding: EdgeInsets.all(5.0),
+                  padding: EdgeInsets.only(left: 5.0, right: 5.0),
                   child: Container(
                     child: Text(
-                      category.category_global,
+                      categoryLocal.category_local,
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: "Comfort",
