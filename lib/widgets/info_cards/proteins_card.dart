@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../models/recipe.dart';
 
@@ -18,7 +19,7 @@ class ProteinsCard extends StatelessWidget {
         child: Column(children: [
           Padding(
               padding: EdgeInsets.only(top: 8, bottom: 8),
-              child: Text("Белки",
+              child: Text("proteins".tr,
                   style: TextStyle(
                       color: Colors.white, fontFamily: "Comfort", fontSize: 12),
                   textAlign: TextAlign.center)),
@@ -31,7 +32,7 @@ class ProteinsCard extends StatelessWidget {
           ),
           Padding(
               padding: EdgeInsets.only(top: 8, bottom: 8),
-              child: Text(recipe.proteins.toString() + " г/100г",
+              child: Text(recipe.proteins.toString() + " " + "grams".tr,
                   style: TextStyle(
                       color: Colors.white, fontFamily: "Comfort", fontSize: 12),
                   textAlign: TextAlign.center)),

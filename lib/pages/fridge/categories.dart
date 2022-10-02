@@ -75,7 +75,7 @@ class _CategoriesState extends State<Categories> {
               ),
               child: ListTile(
                 title: Text(
-                  categoryList[index].category.capitalize(),
+                  categoryList[index].category.capitalizator(),
                   style: const TextStyle(
                       fontFamily: "Comfort",
                       color: Colors.white54,

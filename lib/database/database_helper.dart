@@ -26,7 +26,7 @@ class DBHelper {
     String path = join(documentsDirectory.path, 'db'.tr);
     bool dbExists = await io.File(path).exists();
     if (!dbExists) {
-      ByteData data = await rootBundle.load(join("assets", "FridgeXX.db"));
+      ByteData data = await rootBundle.load(join("assets", 'db'.tr));
       List<int> bytes =
           data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
       await io.File(path).writeAsBytes(bytes, flush: true);

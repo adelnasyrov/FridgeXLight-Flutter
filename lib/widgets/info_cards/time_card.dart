@@ -1,5 +1,6 @@
 import 'package:cook_it/models/recipe.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TimeCard extends StatelessWidget {
   Recipe recipe;
@@ -17,7 +18,7 @@ class TimeCard extends StatelessWidget {
         child: Column(children: [
           Padding(
               padding: EdgeInsets.only(top: 8, bottom: 8),
-              child: Text("Время приготовления",
+              child: Text("cooking_time".tr,
                   style: TextStyle(
                       color: Colors.white, fontFamily: "Comfort", fontSize: 12),
                   textAlign: TextAlign.center)),
@@ -30,7 +31,7 @@ class TimeCard extends StatelessWidget {
           ),
           Padding(
               padding: EdgeInsets.only(top: 8, bottom: 8),
-              child: Text(recipe.time.toString() + " мин",
+              child: Text(recipe.time.toString() + " " + "mins".tr,
                   style: TextStyle(
                       color: Colors.white, fontFamily: "Comfort", fontSize: 12),
                   textAlign: TextAlign.center)),

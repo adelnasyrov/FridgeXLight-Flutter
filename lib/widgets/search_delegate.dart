@@ -90,7 +90,7 @@ class MySearchDelegate extends SearchDelegate {
                           ),
                           child: ListTile(
                             title: Text(
-                              suggestion.product.capitalize(),
+                              suggestion.product.capitalizator(),
                               style: const TextStyle(
                                   fontFamily: "Comfort",
                                   color: Colors.white54,
@@ -157,7 +157,7 @@ class MySearchDelegate extends SearchDelegate {
                           ),
                           child: ListTile(
                             title: Text(
-                              suggestion.product.capitalize(),
+                              suggestion.product.capitalizator(),
                               style: const TextStyle(
                                   fontFamily: "Comfort",
                                   color: Colors.white54,

@@ -1,5 +1,6 @@
 import 'package:cook_it/extensions/capitalize.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../models/recipe.dart';
 
@@ -19,7 +20,7 @@ class RecipeIngredients extends StatelessWidget {
     for (var i = 0; i < ingredientsMeasure.length; i++) {
       if (recipeValues[i] == "-1") {
         recipeValues[i] = "";
-        ingredientsMeasure[i] = "по вкусу";
+        ingredientsMeasure[i] = "to_taste".tr;
       }
     }
     return Padding(
@@ -32,7 +33,7 @@ class RecipeIngredients extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 20),
                     child: Text(
-                      ingredientsList[index].capitalize(),
+                      ingredientsList[index].capitalizator(),
                       style: TextStyle(
                           color: Colors.white54,
                           fontFamily: "Comfort",

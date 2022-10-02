@@ -23,7 +23,17 @@ class LocalString extends Translations {
           "mins": "mins",
           "kcal": "kcal/100g",
           "grams": "g/100g",
-          "db": "FridgeXX_en.db"
+          "db": "FridgeXX_en.db",
+          "to_taste": "to taste",
+          "clear_fridge": "Clear Fridge",
+          "do_you_want_to":
+              "Do you want to delete all products from your Fridge?",
+          "no": "No",
+          "yes": "Yes",
+          "tap_plus":
+              "Fridge is free. Add products to fridge by tapping '+' button",
+          "product_deleted1": "Product",
+          "product_deleted2": "has been deleted from Fridge",
         },
         "ru_RU": {
           "fridge": "Холодильник",
@@ -44,7 +54,17 @@ class LocalString extends Translations {
           "mins": "мин",
           "kcal": "ккал/100г",
           "grams": "г/100г",
-          "db": "FridgeXX.db"
+          "db": "FridgeXX.db",
+          "to_taste": "по вкусу",
+          "clear_fridge": "Очистить холодильник",
+          "do_you_want_to":
+              "Вы хотите удалить все продукты из вашего Холодильника",
+          "no": "Нет",
+          "yes": "Да",
+          "tap_plus":
+              "Холодильник пуст. Добавьте продукты в холодильник нажав на '+'",
+          "product_deleted1": "Продукт",
+          "product_deleted2": "был удален из холодильника",
         }
       };
 }

@@ -17,7 +17,7 @@ class RecipeInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.all(10),
       child: Container(
         child: SingleChildScrollView(
           child: Row(

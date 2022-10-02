@@ -5,6 +5,7 @@ import 'package:cook_it/extensions/capitalize.dart';
 import 'package:cook_it/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 
 class Fridge extends StatefulWidget {
   const Fridge({Key? key}) : super(key: key);
@@ -56,13 +57,14 @@ class _FridgeState extends State<Fridge> {
 
   @override
   Widget build(BuildContext context) {
+    getData();
     var scaffold = Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.grey[800],
-        title: const Text(
-          "Fridge",
+        title: Text(
+          "fridge".tr,
           style: TextStyle(
             fontFamily: "Comfort",
             color: Colors.white,
@@ -70,7 +72,7 @@ class _FridgeState extends State<Fridge> {
         ),
         actions: [
           Padding(
-              padding: const EdgeInsets.only(right: 20.0),
+              padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
                 onTap: () {
                   AlertDialog remove = AlertDialog(
@@ -78,8 +80,8 @@ class _FridgeState extends State<Fridge> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     backgroundColor: Colors.grey[900],
-                    title: const Text(
-                      'Clear Fridge',
+                    title: Text(
+                      'clear_fridge'.tr,
                       style: TextStyle(
                           color: Colors.white,
                           fontFamily: "Comfort",
@@ -87,9 +89,9 @@ class _FridgeState extends State<Fridge> {
                     ),
                     content: SingleChildScrollView(
                       child: ListBody(
-                        children: const <Widget>[
+                        children: <Widget>[
                           Text(
-                            'Do you want to delete all products from your Fridge?',
+                            'do_you_want_to'.tr,
                             style: TextStyle(
                                 color: Colors.white54,
                                 fontFamily: "Comfort",
@@ -100,8 +102,8 @@ class _FridgeState extends State<Fridge> {
                     ),
                     actions: <Widget>[
                       TextButton(
-                        child: const Text(
-                          'No',
+                        child: Text(
+                          'no'.tr,
                           style: TextStyle(color: Colors.deepOrangeAccent),
                         ),
                         onPressed: () {
@@ -109,8 +111,8 @@ class _FridgeState extends State<Fridge> {
                         },
                       ),
                       TextButton(
-                        child: const Text(
-                          'Yes',
+                        child: Text(
+                          'yes'.tr,
                           style: TextStyle(color: Colors.deepOrangeAccent),
                         ),
                         onPressed: () {
@@ -144,65 +146,62 @@ class _FridgeState extends State<Fridge> {
                 child:
                     CircularProgressIndicator(color: Colors.deepOrangeAccent),
               )
-            : ListView.builder(
-                itemBuilder: (BuildContext context, int index) {
-                  if (fridgeList.length == 0) {
-                    return Container(
-                      child: Center(
-                        child: Text(
-                          "Add products to fridge by tapping + button",
-                          style: TextStyle(color: Colors.white54),
-                        ),
-                      ),
-                    );
-                  }
-                  return Padding(
-                    padding: EdgeInsets.only(top: 7, left: 10, right: 10),
-                    child: Dismissible(
-                      direction: DismissDirection.endToStart,
-                      onDismissed: (direction) {
-                        Fluttertoast.showToast(
-                            msg: "Продукт " +
-                                '"' +
-                                "${fridgeList[index].product.capitalize()}" +
-                                '" ' +
-                                "был удален из холодильника", // message
-                            toastLength: Toast.LENGTH_SHORT, // length
-                            gravity: ToastGravity.BOTTOM, // location
-                            timeInSecForIosWeb: 1 // duration
-                            );
-                        setState(() {
-                          removeProduct(fridgeList[index].product);
-                          fridgeList.removeAt(index);
-                          categoriesImage.removeAt(index);
-                        });
-                      },
-                      key: Key(fridgeList[index].product),
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        child: ListTile(
-                          title: Text(
-                            fridgeList[index].product.capitalize(),
-                            style: const TextStyle(
-                                fontFamily: "Comfort",
-                                color: Colors.white54,
-                                fontSize: 15),
-                          ),
-                          trailing: ImageIcon(
-                            AssetImage(categoriesImage[index]),
-                            color: Colors.white54,
-                            size: 30,
-                          ),
-                        ),
-                        color: Colors.grey[850],
-                      ),
+            : fridgeList.length == 0
+                ? Center(
+                    child: Text(
+                      'tap_plus'.tr,
+                      style: TextStyle(color: Colors.white54),
                     ),
-                  );
-                },
-                itemCount: fridgeList.length,
-              ),
+                  )
+                : ListView.builder(
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                        padding: EdgeInsets.only(top: 7, left: 10, right: 10),
+                        child: Dismissible(
+                          direction: DismissDirection.endToStart,
+                          onDismissed: (direction) {
+                            Fluttertoast.showToast(
+                                msg: "product_deleted1".tr +
+                                    '"' +
+                                    "${fridgeList[index].product.capitalizator()}" +
+                                    '" ' +
+                                    "product_deleted2".tr, // message
+                                toastLength: Toast.LENGTH_SHORT, // length
+                                gravity: ToastGravity.BOTTOM, // location
+                                timeInSecForIosWeb: 1 // duration
+                                );
+                            setState(() {
+                              removeProduct(fridgeList[index].product);
+                              fridgeList.removeAt(index);
+                              categoriesImage.removeAt(index);
+                            });
+                          },
+                          key: Key(fridgeList[index].product),
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            child: ListTile(
+                              title: Text(
+                                fridgeList[index].product.capitalizator(),
+                                style: TextStyle(
+                                    fontFamily: "Comfort",
+                                    color: Colors.white54,
+                                    fontSize: 15),
+                              ),
+                              trailing: ImageIcon(
+                                AssetImage(categoriesImage[index]),
+                                color: Colors.white54,
+                                size: 30,
+                              ),
+                            ),
+                            color: Colors.grey[850],
+                          ),
+                        ),
+                      );
+                    },
+                    itemCount: fridgeList.length,
+                  ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

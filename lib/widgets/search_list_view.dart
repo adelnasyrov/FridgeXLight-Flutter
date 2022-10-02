@@ -1,6 +1,7 @@
 import 'package:cook_it/extensions/capitalize.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../models/recipe.dart';
 
@@ -51,7 +52,7 @@ class SearchListView extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    recipeList[index].recipe_name.capitalize(),
+                    recipeList[index].recipe_name.capitalizator(),
                     style: TextStyle(
                         color: Colors.white70,
                         fontSize: 15,
@@ -107,7 +108,7 @@ class SearchListView extends StatelessWidget {
                         width: 5,
                       ),
                       Text(
-                        recipeList[index].time.toString() + "мин",
+                        recipeList[index].time.toString() + "mins".tr,
                         style: TextStyle(
                             color: Colors.white70,
                             fontSize: 12,

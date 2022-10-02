@@ -1,5 +1,5 @@
 extension StringExtension on String {
-  String capitalize() {
+  String capitalizator() {
     return "${this[0].toUpperCase()}${this.substring(1).toLowerCase()}";
   }
 }

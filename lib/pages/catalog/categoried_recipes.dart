@@ -89,7 +89,7 @@ class _CategoriedRecipes extends State<CategoriedRecipes> {
                         ),
                         Expanded(
                           child: Text(
-                            recipeList[index].recipe_name.capitalize(),
+                            recipeList[index].recipe_name.capitalizator(),
                             style: TextStyle(
                                 color: Colors.white70,
                                 fontSize: 15,

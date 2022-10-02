@@ -11,6 +11,7 @@ import 'package:cook_it/pages/search/recipe_screen.dart';
 import 'package:cook_it/pages/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() async {
@@ -90,22 +91,22 @@ class _MainPageState extends State<MainPage> {
         backgroundColor: Colors.grey[800],
         fixedColor: Colors.deepOrangeAccent,
         unselectedItemColor: Colors.white70,
-        items: const [
+        items: [
           BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage("assets/images/fridge_button.png"),
               ),
-              label: "Fridge"),
+              label: "fridge".tr),
           BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage("assets/images/search_button.png"),
               ),
-              label: "Search"),
+              label: "search".tr),
           BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage("assets/images/folder_button.png"),
               ),
-              label: "Catalog"),
+              label: "catalog".tr),
         ],
       ),
     );

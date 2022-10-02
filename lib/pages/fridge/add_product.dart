@@ -86,7 +86,7 @@ class _AddProductState extends State<AddProduct> {
               ),
               child: ListTile(
                 title: Text(
-                  productsList[index].product.capitalize(),
+                  productsList[index].product.capitalizator(),
                   style: const TextStyle(
                       fontFamily: "Comfort",
                       color: Colors.white54,

@@ -3,6 +3,7 @@ import 'package:cook_it/models/recipe_category_global.dart';
 import 'package:cook_it/widgets/recipe_global_category.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../database/database_helper.dart';
 import '../../widgets/search_delegate2.dart';
@@ -53,7 +54,7 @@ class _CatalogState extends State<Catalog> {
         appBar: AppBar(
           backgroundColor: Colors.grey[800],
           title: Text(
-            "Catalog",
+            "catalog".tr,
             style: TextStyle(
               fontFamily: "Comfort",
               color: Colors.white,
