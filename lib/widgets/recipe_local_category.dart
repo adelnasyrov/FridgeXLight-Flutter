@@ -12,7 +12,10 @@ class RecipeLocalCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, "/categoried_recipes",
+            arguments: {"category_local": categoryLocal});
+      },
       child: Container(
         height: MediaQuery.of(context).size.height / 5.2,
         child: Stack(
@@ -20,9 +23,9 @@ class RecipeLocalCategory extends StatelessWidget {
           children: [
             Positioned.fill(
                 child: Padding(
-              padding: EdgeInsets.only(left: 5.0, right: 5.0),
+              padding: EdgeInsets.only(left: 10.0, right: 10.0),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(20),
                 child: Image.asset(
                   image_address,
                   fit: BoxFit.cover,
@@ -31,10 +34,10 @@ class RecipeLocalCategory extends StatelessWidget {
             )),
             Positioned(
                 child: Padding(
-              padding: EdgeInsets.only(left: 5.0, right: 5.0),
+                  padding: EdgeInsets.only(left: 10.0, right: 10.0),
               child: Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(20),
                     gradient: LinearGradient(
                       begin: Alignment.bottomCenter,
                       end: Alignment.topCenter,
@@ -46,21 +49,20 @@ class RecipeLocalCategory extends StatelessWidget {
               ),
             )),
             Positioned(
-                left: 10,
-                bottom: 10,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 5.0, right: 5.0),
-                  child: Container(
-                    child: Text(
-                      categoryLocal.category_local,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: "Comfort",
-                        fontSize: 15,
-                      ),
-                    ),
+              left: 20,
+              bottom: 15,
+              right: 20,
+              child: Container(
+                child: Text(
+                  categoryLocal.category_local,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: "Comfort",
+                    fontSize: 18,
                   ),
-                )),
+                ),
+              ),
+            ),
           ],
         ),
       ),

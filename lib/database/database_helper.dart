@@ -225,4 +225,81 @@ class DBHelper {
     }
     return recipeCategoriesLocal;
   }
+
+  Future<List<Recipe>> getRecipesByLocalCategory(String local_category) async {
+    var dbCursor = await db;
+    List<Map> mappedList = await dbCursor!.rawQuery(
+        'SELECT * FROM recipes WHERE category_local = "$local_category"');
+    List<Recipe> recipes = [];
+    List<Product> productsHave = await getProducts();
+    List<String> ids = [];
+    for (var elem in productsHave) {
+      ids.add(elem.id.toString());
+    }
+    for (int i = 0; i < mappedList.length; i++) {
+      int amount = 0;
+      var products = mappedList[i]["recipe"].toString().split(" ");
+      int max_amount = products.length;
+      for (var elem in products) {
+        if (ids.contains(elem)) amount += 1;
+      }
+      recipes.add(Recipe(
+          id: mappedList[i]["id"],
+          category_global: mappedList[i]["category_global"],
+          category_local: mappedList[i]["category_local"],
+          recipe_name: mappedList[i]["recipe_name"],
+          recipe: mappedList[i]["recipe"],
+          recipe_value: mappedList[i]["recipe_value"],
+          time: mappedList[i]["time"],
+          is_starred: mappedList[i]["is_starred"],
+          actions: mappedList[i]["actions"],
+          source: mappedList[i]["source"].toString(),
+          calories: mappedList[i]["calories"],
+          proteins: mappedList[i]["proteins"].toDouble(),
+          fats: mappedList[i]["fats"].toDouble(),
+          carboh: mappedList[i]["carboh"].toDouble(),
+          banned: mappedList[i]["banned"],
+          amountHave: amount,
+          percentageAmountHave: amount / max_amount));
+    }
+    return recipes;
+  }
+
+  Future<List<Recipe>> getAllRecipes() async {
+    var dbCursor = await db;
+    List<Map> mappedList = await dbCursor!.rawQuery('SELECT * FROM recipes');
+    List<Recipe> recipes = [];
+    List<Product> productsHave = await getProducts();
+    List<String> ids = [];
+    for (var elem in productsHave) {
+      ids.add(elem.id.toString());
+    }
+    for (int i = 0; i < mappedList.length; i++) {
+      int amount = 0;
+      var products = mappedList[i]["recipe"].toString().split(" ");
+      int max_amount = products.length;
+      for (var elem in products) {
+        if (ids.contains(elem)) amount += 1;
+      }
+      recipes.add(Recipe(
+          id: mappedList[i]["id"],
+          category_global: mappedList[i]["category_global"],
+          category_local: mappedList[i]["category_local"],
+          recipe_name: mappedList[i]["recipe_name"],
+          recipe: mappedList[i]["recipe"],
+          recipe_value: mappedList[i]["recipe_value"],
+          time: mappedList[i]["time"],
+          is_starred: mappedList[i]["is_starred"],
+          actions: mappedList[i]["actions"],
+          source: mappedList[i]["source"].toString(),
+          calories: mappedList[i]["calories"],
+          proteins: mappedList[i]["proteins"].toDouble(),
+          fats: mappedList[i]["fats"].toDouble(),
+          carboh: mappedList[i]["carboh"].toDouble(),
+          banned: mappedList[i]["banned"],
+          amountHave: amount,
+          percentageAmountHave: amount / max_amount));
+    }
+    return recipes;
+  }
 }

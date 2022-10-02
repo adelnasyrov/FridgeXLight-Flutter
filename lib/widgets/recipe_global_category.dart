@@ -16,7 +16,7 @@ class RecipeGlobalCategory extends StatelessWidget {
             arguments: {"category_global": category});
       },
       child: Container(
-        height: MediaQuery.of(context).size.height / 5.2,
+        height: MediaQuery.of(context).size.height / 5.4,
         child: Stack(
           alignment: AlignmentDirectional.centerStart,
           children: [
@@ -48,21 +48,19 @@ class RecipeGlobalCategory extends StatelessWidget {
               ),
             )),
             Positioned(
-                left: 10,
-                bottom: 10,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 5.0, right: 5.0),
-                  child: Container(
-                    child: Text(
-                      category.category_global,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: "Comfort",
-                        fontSize: 15,
-                      ),
-                    ),
+              left: 15,
+              bottom: 15,
+              child: Container(
+                child: Text(
+                  category.category_global,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: "Comfort",
+                    fontSize: 17,
                   ),
-                )),
+                ),
+              ),
+            ),
           ],
         ),
       ),

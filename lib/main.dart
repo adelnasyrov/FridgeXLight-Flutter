@@ -1,4 +1,5 @@
 import 'package:cook_it/pages/catalog/catalog.dart';
+import 'package:cook_it/pages/catalog/categoried_recipes.dart';
 import 'package:cook_it/pages/catalog/local_catalog.dart';
 import 'package:cook_it/pages/fridge/add_product.dart';
 import 'package:cook_it/pages/fridge/categories.dart';
@@ -44,6 +45,7 @@ class _MyAppState extends State<MyApp> {
         '/addproduct': (context) => const AddProduct(),
         '/recipe_screen': (context) => const RecipeScreen(),
         '/local_catalog': (context) => const LocalCatalog(),
+        '/categoried_recipes': (context) => const CategoriedRecipes(),
       },
     );
   }

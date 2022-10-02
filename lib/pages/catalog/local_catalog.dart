@@ -45,19 +45,23 @@ class _LocalCatalog extends State<LocalCatalog> {
       appBar: CustomAppBar(
         heading: category_global.category_global,
       ),
-      body: Container(
-        child: ListView.builder(
-            itemCount: localCategoriesList.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: RecipeLocalCategory(
-                    categoryLocal: localCategoriesList[index],
-                    image_address: "assets/images/local_categories/podcateg_" +
-                        localCategoriesList[index].id.toString() +
-                        ".jpg"),
-              );
-            }),
+      body: Padding(
+        padding: EdgeInsets.only(bottom: 10),
+        child: Container(
+          child: ListView.builder(
+              itemCount: localCategoriesList.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.only(top: 15),
+                  child: RecipeLocalCategory(
+                      categoryLocal: localCategoriesList[index],
+                      image_address:
+                          "assets/images/local_categories/podcateg_" +
+                              localCategoriesList[index].id.toString() +
+                              ".jpg"),
+                );
+              }),
+        ),
       ),
     );
   }
