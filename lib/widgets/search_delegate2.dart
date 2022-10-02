@@ -31,6 +31,7 @@ class MySearchDelegate2 extends SearchDelegate {
   @override
   ThemeData appBarTheme(BuildContext context) {
     return ThemeData(
+      brightness: Brightness.dark,
       inputDecorationTheme: InputDecorationTheme(
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.transparent),
@@ -42,12 +43,13 @@ class MySearchDelegate2 extends SearchDelegate {
       ),
       hintColor: Colors.white54,
       textTheme: TextTheme(
-          headline6: TextStyle(
-        decorationThickness: 0.0000001,
-        color: Colors.white,
-        fontSize: 20,
-        fontFamily: "Comfort",
-      )),
+        headline6: TextStyle(
+          decorationThickness: 0.0000001,
+          color: Colors.white,
+          fontSize: 20,
+          fontFamily: "Comfort",
+        ),
+      ),
       appBarTheme: AppBarTheme(
         centerTitle: true,
         color: Colors.grey[800],
