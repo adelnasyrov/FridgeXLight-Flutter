@@ -7,6 +7,7 @@ import 'package:cook_it/models/recipe.dart';
 import 'package:cook_it/models/recipe_category_global.dart';
 import 'package:cook_it/models/recipe_category_local.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -22,7 +23,7 @@ class DBHelper {
 
   initDB() async {
     io.Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, "FridgeXX.db");
+    String path = join(documentsDirectory.path, 'db'.tr);
     bool dbExists = await io.File(path).exists();
     if (!dbExists) {
       ByteData data = await rootBundle.load(join("assets", "FridgeXX.db"));

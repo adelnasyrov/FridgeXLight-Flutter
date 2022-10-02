@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RecipeTabbar extends StatelessWidget {
   TabController tabController;
@@ -19,9 +20,9 @@ class RecipeTabbar extends StatelessWidget {
           labelStyle: TextStyle(fontFamily: "Comfort", fontSize: 15),
           controller: tabController,
           tabs: [
-            Tab(text: "Ingredients"),
-            Tab(text: "Recipe"),
-            Tab(text: "Info"),
+            Tab(text: 'ingredients'.tr),
+            Tab(text: "recipe".tr),
+            Tab(text: "info".tr),
           ],
         ),
       ),

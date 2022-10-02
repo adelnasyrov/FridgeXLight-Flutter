@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:cook_it/locale_string.dart';
 import 'package:cook_it/pages/catalog/catalog.dart';
 import 'package:cook_it/pages/catalog/categoried_recipes.dart';
 import 'package:cook_it/pages/catalog/local_catalog.dart';
@@ -8,6 +11,7 @@ import 'package:cook_it/pages/search/recipe_screen.dart';
 import 'package:cook_it/pages/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +32,11 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      translations: LocalString(),
+      locale: window.locale.languageCode == "ru"
+          ? Locale('ru', "RU")
+          : Locale('en', "US"),
       theme: ThemeData(
         primarySwatch: Colors.grey,
         unselectedWidgetColor: Colors.deepOrangeAccent,
