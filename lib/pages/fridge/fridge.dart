@@ -148,9 +148,15 @@ class _FridgeState extends State<Fridge> {
               )
             : fridgeList.length == 0
                 ? Center(
-                    child: Text(
-                      'tap_plus'.tr,
-                      style: TextStyle(color: Colors.white54),
+                    child: Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Text(
+                        'tap_plus'.tr,
+                        style: TextStyle(
+                            color: Colors.white54,
+                            fontFamily: "Comfort",
+                            fontSize: 15),
+                      ),
                     ),
                   )
                 : ListView.builder(
@@ -222,7 +228,7 @@ class _FridgeState extends State<Fridge> {
     List<String> productsCategories = [];
     for (int i = 0; i < productsList.length; i++) {
       if (productsList[i].category == "Мясные изделия" ||
-          productsList[i].category == "Meat") {
+          productsList[i].category == "Meat products") {
         productsCategories.add("assets/images/category1.png");
       } else if (productsList[i].category == "Рыба" ||
           productsList[i].category == "Fish") {
@@ -284,6 +290,8 @@ class _FridgeState extends State<Fridge> {
       } else if (productsList[i].category == "Другое" ||
           productsList[i].category == "Others") {
         productsCategories.add("assets/images/category21.png");
+      } else {
+        productsCategories.add("assets/images/proteins.png");
       }
     }
     return productsCategories;

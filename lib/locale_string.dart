@@ -23,7 +23,7 @@ class LocalString extends Translations {
           "mins": "mins",
           "kcal": "kcal/100g",
           "grams": "g/100g",
-          "db": "FridgeXX_en.db",
+          "db": "FridgeXX_en2.db",
           "to_taste": "to taste",
           "clear_fridge": "Clear Fridge",
           "do_you_want_to":
@@ -58,7 +58,7 @@ class LocalString extends Translations {
           "to_taste": "по вкусу",
           "clear_fridge": "Очистить холодильник",
           "do_you_want_to":
-              "Вы хотите удалить все продукты из вашего Холодильника",
+              "Вы хотите удалить все продукты из вашего Холодильника?",
           "no": "Нет",
           "yes": "Да",
           "tap_plus":

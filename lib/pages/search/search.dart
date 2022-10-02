@@ -2,6 +2,7 @@ import 'package:cook_it/models/recipe.dart';
 import 'package:cook_it/widgets/app_bar.dart';
 import 'package:cook_it/widgets/search_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../database/database_helper.dart';
 
@@ -44,7 +45,7 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        heading: "Search",
+        heading: "search".tr,
       ),
       backgroundColor: Colors.grey[900],
       body: Container(

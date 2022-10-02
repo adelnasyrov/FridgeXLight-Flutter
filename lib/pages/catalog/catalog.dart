@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../database/database_helper.dart';
+import '../../widgets/recipe_global_category_disabled.dart';
 import '../../widgets/search_delegate2.dart';
 
 class Catalog extends StatefulWidget {
@@ -99,14 +100,14 @@ class _CatalogState extends State<Catalog> {
                           category: categoriesList[2],
                           image_address:
                           "assets/images/global_categories/categ_3.jpg"),
-                      RecipeGlobalCategory(
-                          category: categoriesList[4],
-                          image_address:
-                          "assets/images/global_categories/categ_5.jpg"),
-                      RecipeGlobalCategory(
-                          category: categoriesList[6],
-                          image_address:
-                          "assets/images/global_categories/categ_7.jpg"),
+                      RecipeGlobalCategoryDisabled(
+                                category: categoriesList[4],
+                                image_address:
+                                    "assets/images/global_categories/categ_5.jpg"),
+                      RecipeGlobalCategoryDisabled(
+                                category: categoriesList[6],
+                                image_address:
+                                    "assets/images/global_categories/categ_7.jpg"),
                     ],
                   ),
                 ),
@@ -122,14 +123,14 @@ class _CatalogState extends State<Catalog> {
                           category: categoriesList[3],
                           image_address:
                           "assets/images/global_categories/categ_4.jpg"),
-                      RecipeGlobalCategory(
-                          category: categoriesList[5],
-                          image_address:
-                          "assets/images/global_categories/categ_6.jpg"),
-                      RecipeGlobalCategory(
-                          category: categoriesList[7],
-                          image_address:
-                          "assets/images/global_categories/categ_8.jpg"),
+                      RecipeGlobalCategoryDisabled(
+                                category: categoriesList[5],
+                                image_address:
+                                    "assets/images/global_categories/categ_6.jpg"),
+                      RecipeGlobalCategoryDisabled(
+                                category: categoriesList[7],
+                                image_address:
+                                    "assets/images/global_categories/categ_8.jpg"),
                     ],
                   ),
                 )
