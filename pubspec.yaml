@@ -291,6 +291,14 @@ flutter:
     - family: Andika
       fonts:
         - asset: fonts/AndikaNewBasic-R.ttf
+
+    - family: StolzlBook
+      fonts:
+        - asset: fonts/Stolzl-Book.ttf
+
+    - family: StolzlRegular
+      fonts:
+        - asset: fonts/Stolzl-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

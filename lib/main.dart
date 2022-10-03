@@ -9,6 +9,7 @@ import 'package:cook_it/pages/fridge/categories.dart';
 import 'package:cook_it/pages/fridge/fridge.dart';
 import 'package:cook_it/pages/search/recipe_screen.dart';
 import 'package:cook_it/pages/search/search.dart';
+import 'package:cook_it/pages/subscription_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -55,6 +56,7 @@ class _MyAppState extends State<MyApp> {
         '/recipe_screen': (context) => const RecipeScreen(),
         '/local_catalog': (context) => const LocalCatalog(),
         '/categoried_recipes': (context) => const CategoriedRecipes(),
+        '/subscription_options': (context) => const SubscriptionOptions(),
       },
     );
   }

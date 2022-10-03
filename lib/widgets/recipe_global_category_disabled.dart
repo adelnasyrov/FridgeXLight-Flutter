@@ -12,7 +12,9 @@ class RecipeGlobalCategoryDisabled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, '/subscription_options');
+      },
       child: Container(
         height: MediaQuery.of(context).size.height / 5.4,
         child: Stack(
