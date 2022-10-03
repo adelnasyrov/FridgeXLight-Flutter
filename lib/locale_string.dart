@@ -34,6 +34,7 @@ class LocalString extends Translations {
               "Fridge is free. Add products to fridge by tapping '+' button",
           "product_deleted1": "Product",
           "product_deleted2": "has been deleted from Fridge",
+          "sub_first": "Available only with monthly subscription",
         },
         "ru_RU": {
           "fridge": "Холодильник",
@@ -65,6 +66,7 @@ class LocalString extends Translations {
               "Холодильник пуст. Добавьте продукты в холодильник нажав на '+'",
           "product_deleted1": "Продукт",
           "product_deleted2": "был удален из холодильника",
+          "sub_first": "Доступно только с ежемесячной подпиской",
         }
       };
 }

@@ -66,29 +66,33 @@ class _SubscriptionOptionsState extends State<SubscriptionOptions> {
                                       color: Colors.deepOrangeAccent,
                                       fontSize: 30),
                                 ),
-                                Text(
-                                  " / mo",
-                                  style: TextStyle(
-                                      fontFamily: "StolzlRegular",
-                                      color: Colors.white.withOpacity(0.7),
-                                      fontSize: 30),
-                                ),
-                              ],
+                            Text(
+                              " / mo",
+                              style: TextStyle(
+                                  fontFamily: "StolzlRegular",
+                                  color: Colors.white.withOpacity(0.7),
+                                  fontSize: 30),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 40, left: 20),
-                            child: Row(
-                              children: [
-                                Text(
-                                  "•  44 ",
-                                  style: TextStyle(
-                                      fontFamily: "StolzlBook",
-                                      color: Colors.white,
-                                      fontSize: 17),
-                                ),
-                                Text(
-                                  "new recipes",
+                          ],
+                        ),
+                      ),
+                      Spacer(),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 20,
+                          right: 20,
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
+                              "•  44 ",
+                              style: TextStyle(
+                                  fontFamily: "StolzlBook",
+                                  color: Colors.white,
+                                  fontSize: 17),
+                            ),
+                            Text(
+                              "new recipes",
                                   style: TextStyle(
                                       fontFamily: "StolzlBook",
                                       color: Colors.deepOrangeAccent,
@@ -116,11 +120,11 @@ class _SubscriptionOptionsState extends State<SubscriptionOptions> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: 15, left: 20),
-                            child: SubscriptionOpensText(
-                              whatOpened: "Drinks",
-                            ),
-                          ),
+                            padding: EdgeInsets.only(top: 15, left: 20, bottom: 50),
+                        child: SubscriptionOpensText(
+                          whatOpened: "Drinks",
+                        ),
+                      ),
                           Spacer(),
                           Padding(
                               padding:

@@ -1,6 +1,7 @@
 import 'package:cook_it/models/recipe_category_global.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RecipeGlobalCategoryDisabled extends StatelessWidget {
   RecipeCategoryGlobal category;
@@ -62,14 +63,33 @@ class RecipeGlobalCategoryDisabled extends StatelessWidget {
               ),
             )),
             Positioned(
-              right: 0,
-              left: 0,
-              child: Icon(
-                Icons.lock,
-                color: Colors.white54,
-                size: 40,
-              ),
-            )
+                right: 0,
+                left: 0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 20, right: 10),
+                      child: Icon(
+                        Icons.lock,
+                        color: Colors.white54,
+                        size: 40,
+                      ),
+                    ),
+                    Expanded(
+                        child: Padding(
+                      padding: EdgeInsets.only(right: 20),
+                      child: Text(
+                        'sub_first'.tr,
+                        style: TextStyle(
+                          color: Colors.white54,
+                          fontFamily: "Comfort",
+                          fontSize: 13,
+                        ),
+                      ),
+                    ))
+                  ],
+                ))
           ],
         ),
       ),
